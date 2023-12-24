@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter.Net.WPF.Converters"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter.Net.WPF.Converters.Tests", "Chapter.Net.WPF.Converters.Tests\Chapter.Net.WPF.Converters.Tests.csproj", "{442BE313-1953-4348-A14C-5EB75122AEE0}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo", "Demo\Demo.csproj", "{5CC545D4-F0E5-4899-9577-96054733D300}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{442BE313-1953-4348-A14C-5EB75122AEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{442BE313-1953-4348-A14C-5EB75122AEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{442BE313-1953-4348-A14C-5EB75122AEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC545D4-F0E5-4899-9577-96054733D300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC545D4-F0E5-4899-9577-96054733D300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC545D4-F0E5-4899-9577-96054733D300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC545D4-F0E5-4899-9577-96054733D300}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
