@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added ConcatenateStringConverter to concatenage a bunch of given items to a single string.
 - Added MultiBooleanToBooleanConverter to merge multiple booleans to a single one.
 - Added MultiBooleanToVisibilityConverter to convert multiple booleans to a single visibility.
+### Supported .Net Versions
+- .Net 6
+- .Net 7
+- .Net 8
 
 ## [1.0.0] - 2023-12-24
 ### Added
