@@ -26,6 +26,9 @@ public class MainViewModel : ObservableObject
     private string _text4;
     private string _text5;
     private string _text6;
+    private string _text7;
+    private string _text8;
+    private string _text9;
 
     public MainViewModel()
     {
@@ -39,6 +42,9 @@ public class MainViewModel : ObservableObject
         Text4 = "second";
         Text5 = "third";
         Text6 = @"C:\Directory\Sub\File.txt";
+        Text7 = @"aaa";
+        Text8 = @"bbb";
+        Text9 = @"ccc";
 
         Integers = new List<IntegerItem> { new(1), new(2), new(3) };
     }
@@ -119,16 +125,34 @@ public class MainViewModel : ObservableObject
         set => NotifyAndSetIfChanged(ref _text5, value);
     }
 
-    public int Integer3
-    {
-        get => _integer3;
-        set => NotifyAndSetIfChanged(ref _integer3, value);
-    }
-
     public string Text6
     {
         get => _text6;
         set => NotifyAndSetIfChanged(ref _text6, value);
+    }
+
+    public string Text7
+    {
+        get => _text7;
+        set => NotifyAndSetIfChanged(ref _text7, value);
+    }
+
+    public string Text8
+    {
+        get => _text8;
+        set => NotifyAndSetIfChanged(ref _text8, value);
+    }
+
+    public string Text9
+    {
+        get => _text9;
+        set => NotifyAndSetIfChanged(ref _text9, value);
+    }
+
+    public int Integer3
+    {
+        get => _integer3;
+        set => NotifyAndSetIfChanged(ref _integer3, value);
     }
 
     public List<IntegerItem> Integers { get; }

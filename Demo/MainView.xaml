@@ -16,6 +16,7 @@
     <Window.Resources>
         <converters:BooleanToIntegerConverter x:Key="BooleanToIntegerConverter" />
         <converters:BooleanToVisibilityInvertedConverter x:Key="BooleanToVisibilityInvertedConverter" />
+        <converters:ConcatenateStringConverter x:Key="ConcatenateStringConverter" Separator="." />
         <converters:CountToBooleanConverter x:Key="CountToBooleanConverter" />
         <converters:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
         <converters:DateOnlyToStringConverter x:Key="DateOnlyToStringConverter" Format="LongDateString" />
@@ -27,6 +28,8 @@
         <converters:IntegerToBooleanConverter x:Key="IntegerToBooleanConverter" />
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
         <converters:IsLastItemInListConverter x:Key="IsLastItemInListConverter" />
+        <converters:MultiBooleanToBooleanConverter x:Key="MultiBooleanToBooleanConverter" MixedIs="{x:Null}" />
+        <converters:MultiBooleanToVisibilityConverter x:Key="MultiBooleanToVisibilityConverter" MixedIs="Hidden" />
         <converters:MultiEqualsToBooleanConverter x:Key="MultiEqualsToBooleanConverter" />
         <converters:MultiEqualsToVisibilityConverter x:Key="MultiEqualsToVisibilityConverter" />
         <converters:MultiValueToPathConverter x:Key="MultiValueToPathConverter" />
@@ -53,6 +56,28 @@
                     <CheckBox x:Name="checked2" Content="Checked" />
                     <TextBlock Margin="10,0" Text="-&gt;" />
                     <TextBlock Text="{Binding IsChecked, ElementName=checked2, Converter={StaticResource BooleanToVisibilityInvertedConverter}}" />
+                </StackPanel>
+            </controls:TitledItem>
+
+            <controls:TitledItem Title="ConcatenateStringConverter">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <TextBox Width="100" Text="{Binding Text7, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Width="100" Text="{Binding Text8, UpdateSourceTrigger=PropertyChanged}" />
+                        <TextBox Width="100" Text="{Binding Text9, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <TextBlock Margin="10,0"
+                               VerticalAlignment="Center"
+                               Text="-&gt;" />
+                    <TextBlock VerticalAlignment="Center">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource ConcatenateStringConverter}">
+                                <Binding Path="Text7" />
+                                <Binding Path="Text8" />
+                                <Binding Path="Text9" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                 </StackPanel>
             </controls:TitledItem>
 
@@ -168,6 +193,52 @@
                                             SortMemberPath="Value" />
                     </DataGrid.Columns>
                 </DataGrid>
+            </controls:TitledItem>
+
+            <controls:TitledItem Title="MultiBooleanToBooleanConverter">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <CheckBox x:Name="checked12" Content="Checked" />
+                        <CheckBox x:Name="checked13" Content="Checked" />
+                        <CheckBox x:Name="checked14" Content="Checked" />
+                    </StackPanel>
+                    <TextBlock Margin="10,0"
+                               VerticalAlignment="Center"
+                               Text="-&gt;" />
+                    <CheckBox VerticalAlignment="Center"
+                              Content="Are Equal"
+                              IsEnabled="False">
+                        <CheckBox.IsChecked>
+                            <MultiBinding Converter="{StaticResource MultiBooleanToBooleanConverter}">
+                                <Binding ElementName="checked12" Path="IsChecked" />
+                                <Binding ElementName="checked13" Path="IsChecked" />
+                                <Binding ElementName="checked14" Path="IsChecked" />
+                            </MultiBinding>
+                        </CheckBox.IsChecked>
+                    </CheckBox>
+                </StackPanel>
+            </controls:TitledItem>
+
+            <controls:TitledItem Title="MultiBooleanToVisibilityConverter">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <CheckBox x:Name="checked15" Content="Checked" />
+                        <CheckBox x:Name="checked16" Content="Checked" />
+                        <CheckBox x:Name="checked17" Content="Checked" />
+                    </StackPanel>
+                    <TextBlock Margin="10,0"
+                               VerticalAlignment="Center"
+                               Text="-&gt;" />
+                    <TextBlock VerticalAlignment="Center" Text="IsVisible">
+                        <TextBlock.Visibility>
+                            <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                                <Binding ElementName="checked15" Path="IsChecked" />
+                                <Binding ElementName="checked16" Path="IsChecked" />
+                                <Binding ElementName="checked17" Path="IsChecked" />
+                            </MultiBinding>
+                        </TextBlock.Visibility>
+                    </TextBlock>
+                </StackPanel>
             </controls:TitledItem>
 
             <controls:TitledItem Title="MultiEqualsToBooleanConverter">

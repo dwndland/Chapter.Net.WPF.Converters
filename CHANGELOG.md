@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2024-01-17
+### Added
+- Added ConcatenateStringConverter to concatenage a bunch of given items to a single string.
+- Added MultiBooleanToBooleanConverter to merge multiple booleans to a single one.
+- Added MultiBooleanToVisibilityConverter to convert multiple booleans to a single visibility.
+
 ## [1.0.0] - 2023-12-24
 ### Added
 - Init project

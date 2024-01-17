@@ -6,6 +6,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
 ## Features
 - **BooleanToIntegerConverter:** Converts an boolean to its integer representation and back.
 - **BooleanToVisibilityInvertedConverter:** Converts true to Visible false to Collapsed. (The opposite of BooleanToVisibilityConverter).
+- **ConcatenateStringConverter** Concatenates a given list of objects to a single string with a separator.
 - **CountToBooleanConverter:** Converts a count to its boolean representation.
 - **CountToVisibilityConverter:** Converts a count to its visibility representation.
 - **DateOnlyToStringConverter:** Converts the given date only to a string by Format.
@@ -17,6 +18,8 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
 - **IntegerToBooleanConverter:** Converts an integer to its boolean representation and back.
 - **InverseBooleanConverter:** Converts a boolean to is opposite.
 - **IsLastItemInListConverter:** Checks if the given item container is the last in the list.
+- **MultiBooleanToBooleanConverter** Merges a bunch of booleans to a single boolean.
+- **MultiBooleanToVisibilityConverter** Merges a bunch of booleans to a single visibility representation.
 - **MultiEqualsToBooleanConverter:** Equals multiple values and returns its result.
 - **MultiEqualsToVisibilityConverter:** Equals multiple values and returns its visibility representation.
 - **MultiValueToPathConverter:** Combines all given strings into a path.
@@ -62,7 +65,35 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-4. **CountToBooleanConverter:**
+4. **ConcatenateStringConverter:**
+    - Usage
+    ```xaml
+    <converters:ConcatenateStringConverter x:Key="ConcatenateStringConverter" Separator="." />
+
+    <controls:TitledItem Title="ConcatenateStringConverter">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <TextBox Width="100" Text="{Binding Text7, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Width="100" Text="{Binding Text8, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Width="100" Text="{Binding Text9, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <TextBlock Margin="10,0"
+                        VerticalAlignment="Center"
+                        Text="-&gt;" />
+            <TextBlock VerticalAlignment="Center">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource ConcatenateStringConverter}">
+                        <Binding Path="Text7" />
+                        <Binding Path="Text8" />
+                        <Binding Path="Text9" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+    </controls:TitledItem>
+    ```
+
+5. **CountToBooleanConverter:**
     - Usage
     ```xaml
     <converters:CountToBooleanConverter x:Key="CountToBooleanConverter" />
@@ -76,7 +107,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-5. **CountToVisibilityConverter:**
+6. **CountToVisibilityConverter:**
     - Usage
     ```xaml
     <converters:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
@@ -90,7 +121,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-6. **DateOnlyToStringConverter:**
+7. **DateOnlyToStringConverter:**
     - Usage
     ```xaml
     <converters:DateOnlyToStringConverter x:Key="DateOnlyToStringConverter" Format="LongDateString" />
@@ -104,7 +135,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-7. **DateTimeToStringConverter:**
+8. **DateTimeToStringConverter:**
     - Usage
     ```xaml
     <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" Format="FullDateTimePattern" />
@@ -118,7 +149,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-8. **DateTimeUtcConverter:**
+9. **DateTimeUtcConverter:**
     - Usage
     ```xaml
     <converters:DateTimeUtcConverter x:Key="DateTimeUtcConverter" ToUniversalTime="True" />
@@ -132,7 +163,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-9. **DoubleValueToThicknessConverter:**
+10. **DoubleValueToThicknessConverter:**
     - Usage
     ```xaml
     <converters:DoubleValueToThicknessConverter x:Key="DoubleValueToThicknessConverter" Position="LeftRight" />
@@ -146,7 +177,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-10. **EqualsToBooleanConverter:**
+11. **EqualsToBooleanConverter:**
     - Usage
     ```xaml
     <converters:EqualsToBooleanConverter x:Key="EqualsToBooleanConverter" />
@@ -160,7 +191,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-11. **EqualsToVisibilityConverter:**
+12. **EqualsToVisibilityConverter:**
     - Usage
     ```xaml
     <converters:EqualsToVisibilityConverter x:Key="EqualsToVisibilityConverter" />
@@ -174,7 +205,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-12. **IntegerToBooleanConverter:**
+13. **IntegerToBooleanConverter:**
     - Usage
     ```xaml
     <converters:IntegerToBooleanConverter x:Key="IntegerToBooleanConverter" />
@@ -188,7 +219,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-13. **InverseBooleanConverter:**
+14. **InverseBooleanConverter:**
     - Usage
     ```xaml
     <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
@@ -202,7 +233,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-14. **IsLastItemInListConverter:**
+15. **IsLastItemInListConverter:**
     - Usage
     ```xaml
     <converters:IsLastItemInListConverter x:Key="IsLastItemInListConverter" />
@@ -242,7 +273,65 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-15. **MultiEqualsToBooleanConverter:**
+16. **MultiBooleanToBooleanConverter:**
+    - Usage
+    ```xaml
+    <converters:MultiBooleanToBooleanConverter x:Key="MultiBooleanToBooleanConverter" MixedIs="{x:Null}" />
+
+    <controls:TitledItem Title="MultiBooleanToBooleanConverter">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <CheckBox x:Name="checked12" Content="Checked" />
+                <CheckBox x:Name="checked13" Content="Checked" />
+                <CheckBox x:Name="checked14" Content="Checked" />
+            </StackPanel>
+            <TextBlock Margin="10,0"
+                        VerticalAlignment="Center"
+                        Text="-&gt;" />
+            <CheckBox VerticalAlignment="Center"
+                        Content="Are Equal"
+                        IsEnabled="False">
+                <CheckBox.IsChecked>
+                    <MultiBinding Converter="{StaticResource MultiBooleanToBooleanConverter}">
+                        <Binding ElementName="checked12" Path="IsChecked" />
+                        <Binding ElementName="checked13" Path="IsChecked" />
+                        <Binding ElementName="checked14" Path="IsChecked" />
+                    </MultiBinding>
+                </CheckBox.IsChecked>
+            </CheckBox>
+        </StackPanel>
+    </controls:TitledItem>
+    ```
+
+17. **MultiBooleanToVisibilityConverter:**
+    - Usage
+    ```xaml
+    <converters:MultiBooleanToVisibilityConverter x:Key="MultiBooleanToVisibilityConverter" MixedIs="Hidden" />
+
+    <controls:TitledItem Title="MultiBooleanToVisibilityConverter">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <CheckBox x:Name="checked15" Content="Checked" />
+                <CheckBox x:Name="checked16" Content="Checked" />
+                <CheckBox x:Name="checked17" Content="Checked" />
+            </StackPanel>
+            <TextBlock Margin="10,0"
+                        VerticalAlignment="Center"
+                        Text="-&gt;" />
+            <TextBlock VerticalAlignment="Center" Text="IsVisible">
+                <TextBlock.Visibility>
+                    <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
+                        <Binding ElementName="checked15" Path="IsChecked" />
+                        <Binding ElementName="checked16" Path="IsChecked" />
+                        <Binding ElementName="checked17" Path="IsChecked" />
+                    </MultiBinding>
+                </TextBlock.Visibility>
+            </TextBlock>
+        </StackPanel>
+    </controls:TitledItem>
+    ```
+
+18. **MultiEqualsToBooleanConverter:**
     - Usage
     ```xaml
     <converters:MultiEqualsToBooleanConverter x:Key="MultiEqualsToBooleanConverter" />
@@ -272,7 +361,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-16. **MultiEqualsToVisibilityConverter:**
+19. **MultiEqualsToVisibilityConverter:**
     - Usage
     ```xaml
     <converters:MultiEqualsToVisibilityConverter x:Key="MultiEqualsToVisibilityConverter" />
@@ -300,7 +389,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-17. **MultiValueToPathConverter:**
+20. **MultiValueToPathConverter:**
     - Usage
     ```xaml
     <converters:MultiValueToPathConverter x:Key="MultiValueToPathConverter" />
@@ -328,7 +417,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-18. **MultiValueToThicknessConverter:**
+21. **MultiValueToThicknessConverter:**
     - Usage
     ```xaml
     <converters:MultiValueToThicknessConverter x:Key="MultiValueToThicknessConverter" />
@@ -362,7 +451,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-19. **NullToBooleanConverter:**
+22. **NullToBooleanConverter:**
     - Usage
     ```xaml
     <converters:NullToBooleanConverter x:Key="NullToBooleanConverter" Direction="NullIsTrue" />
@@ -378,7 +467,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-20. **NullToVisibilityConverter:**
+23. **NullToVisibilityConverter:**
     - Usage
     ```xaml
     <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" Direction="NullIsVisible" />
@@ -394,7 +483,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-21. **PathToStringConverter:**
+24. **PathToStringConverter:**
     - Usage
     ```xaml
     <converters:PathToStringConverter x:Key="PathToStringConverter" Section="Directory" />
@@ -408,7 +497,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </controls:TitledItem>
     ```
 
-22. **TimeOnlyToStringConverter:**
+25. **TimeOnlyToStringConverter:**
     - Usage
     ```xaml
     <converters:TimeOnlyToStringConverter x:Key="TimeOnlyToStringConverter" Format="ToLongTimeString" />
