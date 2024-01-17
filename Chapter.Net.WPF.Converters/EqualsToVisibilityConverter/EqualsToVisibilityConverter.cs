@@ -52,7 +52,7 @@ public class EqualsToVisibilityConverter : IValueConverter
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
     /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">ConvertBack is not implemented.</exception>
+    /// <exception cref="NotImplementedException">The EqualsToVisibilityConverter.ConvertBack is not implemented.</exception>
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         throw new NotImplementedException();

@@ -45,7 +45,7 @@ public class MultiValueToPathConverter : IMultiValueConverter
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
     /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The TimeOnlyToStringConverter.ConvertBack is not implemented.</exception>
+    /// <exception cref="NotImplementedException">The MultiValueToPathConverter.ConvertBack is not implemented.</exception>
     public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
     {
         throw new NotImplementedException();

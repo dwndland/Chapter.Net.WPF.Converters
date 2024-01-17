@@ -48,7 +48,7 @@ public sealed class NullToBooleanConverter : IValueConverter
     /// <param name="parameter">unused</param>
     /// <param name="culture">unused</param>
     /// <returns>Not implemented.</returns>
-    /// <exception cref="NotImplementedException">The <see cref="ConvertBack" /> is not implemented.</exception>
+    /// <exception cref="NotImplementedException">The NullToBooleanConverter.ConvertBack is not implemented.</exception>
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         throw new NotImplementedException();
