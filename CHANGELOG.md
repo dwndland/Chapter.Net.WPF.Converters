@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added base classes for value and  multi value converters and their combination for easy skipping of convert back.
 - Added BooleanToBooleanConverter to convert a single boolean or a list of booleans to another single boolean representation.
+### Removed
+- Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
+- Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
 ### Supported .Net Versions
 - .Net 6
 - .Net 7
