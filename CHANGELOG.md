@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- Added base classes for value and  multi value converters and their combination for easy skipping of convert back.
 - Added BooleanToBooleanConverter to convert a single boolean or a list of booleans to another single boolean representation.
 ### Supported .Net Versions
 - .Net 6
