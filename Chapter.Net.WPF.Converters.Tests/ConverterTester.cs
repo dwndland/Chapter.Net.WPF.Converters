@@ -5,34 +5,30 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using System.Globalization;
-using System.Windows.Data;
 using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class ConverterTester<T> : TesterBase<T> where T : IValueConverter, new()
+public class ConverterTester<T> where T : new()
 {
-    protected void Convert(object value, object expectedResult)
+    private CultureInfo _originalCulture;
+    protected T _target;
+
+    [SetUp]
+    public void Setup()
     {
-        Convert(value, null, expectedResult);
+        _target = new T();
     }
 
-    protected void Convert(object value, object parameter, object expectedResult)
+    [OneTimeSetUp]
+    public void OneTimeSetUp()
     {
-        var result = _target.Convert(value, expectedResult?.GetType(), parameter, CultureInfo.CurrentCulture);
-
-        Assert.That(result, Is.EqualTo(expectedResult));
+        _originalCulture = CultureInfo.CurrentCulture;
     }
 
-    protected void ConvertBack(object value, object expectedResult)
+    [OneTimeTearDown]
+    public void OneTimeTearDown()
     {
-        ConvertBack(value, null, expectedResult);
-    }
-
-    protected void ConvertBack(object value, object parameter, object expectedResult)
-    {
-        var result = _target.ConvertBack(value, expectedResult?.GetType(), parameter, CultureInfo.CurrentCulture);
-
-        Assert.That(result, Is.EqualTo(expectedResult));
+        CultureInfo.CurrentCulture = _originalCulture;
     }
 }

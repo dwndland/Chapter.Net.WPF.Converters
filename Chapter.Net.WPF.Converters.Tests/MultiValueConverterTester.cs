@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="MultiConverterTester.cs" company="my-libraries">
+// <copyright file="MultiValueConverterTester.cs" company="my-libraries">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class MultiConverterTester<T> where T : IMultiValueConverter, new()
+public class MultiValueConverterTester<T> : ConverterTester<T> where T : IMultiValueConverter, new()
 {
     protected T _target;
 
