@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added IntegerMathConverter to do a simple calculation with the given value as integer.
 - Added a multi integer to boolean conversion into the IntegerToBooleanConverter.
 - Added IntegerToStringConverter to format a integer to string.
+- Added IsNullToBooleanConverter to check if a single object or a list of objects is null and returns a boolean representation.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
