@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed MultiEqualsToBooleanConverter, thats integrated into the EqualsToBooleanConverter.
 - Removed MultiEqualsToVisibilityConverter, thats integrated into the EqualsToVisibilityConverter.
 - Remove NullToBooleanConverter, thats replaced by IsNullToBooleanConverter
+- Remove NullToVisibilityConverter, thats replaced by IsNullToVisibilityConverter
 ### Supported .Net Versions
 - .Net 6
 - .Net 7
