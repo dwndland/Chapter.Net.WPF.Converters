@@ -13,14 +13,6 @@ namespace Chapter.Net.WPF.Converters.Tests;
 
 public class MultiValueConverterTester<T> : ConverterTester<T> where T : IMultiValueConverter, new()
 {
-    protected T _target;
-
-    [SetUp]
-    public void Setup()
-    {
-        _target = new T();
-    }
-
     protected void Convert(object[] values, object expectedResult)
     {
         Convert(values, null, expectedResult);
@@ -42,6 +34,6 @@ public class MultiValueConverterTester<T> : ConverterTester<T> where T : IMultiV
     {
         var result = _target.ConvertBack(value, expectedResults.Select(x => x.GetType()).ToArray(), parameter, CultureInfo.CurrentCulture);
 
-        Assert.IsTrue(result.SequenceEqual(expectedResults));
+        Assert.That(result, Is.EqualTo(expectedResults));
     }
 }

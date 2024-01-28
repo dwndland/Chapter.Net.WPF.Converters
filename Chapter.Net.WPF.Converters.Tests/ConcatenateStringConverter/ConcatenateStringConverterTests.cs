@@ -32,6 +32,6 @@ public class ConcatenateStringConverterTests : MultiValueConverterTester<Concate
     [Test]
     public void ConvertBack_Called_RaisesException()
     {
-        Assert.That(() => ConvertBack(null, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
+        Assert.That(() => ConvertBack(null, []), Throws.TypeOf<NotImplementedException>());
     }
 }

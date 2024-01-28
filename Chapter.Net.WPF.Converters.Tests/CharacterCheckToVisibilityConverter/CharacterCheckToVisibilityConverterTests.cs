@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="CharacterCheckToBooleanConverterTests.cs" company="my-libraries">
+// <copyright file="CharacterCheckToVisibilityConverterTests.cs" company="my-libraries">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
