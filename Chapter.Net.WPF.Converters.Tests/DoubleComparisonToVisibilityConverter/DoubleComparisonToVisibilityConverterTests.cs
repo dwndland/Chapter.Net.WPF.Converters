@@ -4,6 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Windows;
 using NUnit.Framework;
 
@@ -70,5 +71,17 @@ public class DoubleComparisonToVisibilityConverterTests : SingleAndMultiValueCon
         _target.Variable = variable;
 
         MultiConvert(input, expectation);
+    }
+
+    [Test]
+    public void ConvertBack_Called_RaisesException()
+    {
+        Assert.That(() => ConvertBack(null, ""), Throws.TypeOf<NotImplementedException>());
+    }
+
+    [Test]
+    public void MultiConvertBack_Called_RaisesException()
+    {
+        Assert.That(() => MultiConvertBack(null, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
     }
 }

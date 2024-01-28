@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using NUnit.Framework;
+using System;
 
 // ReSharper disable once CheckNamespace
 
@@ -47,5 +48,11 @@ public class BooleanToIntegerConverterTests : SingleAndMultiValueConverterTester
     public void ConvertBack_CalledWithExpectedFormats_Expects(object input, bool expected)
     {
         ConvertBack(input, expected);
+    }
+
+    [Test]
+    public void MultiConvertBack_Called_RaisesException()
+    {
+        Assert.That(() => MultiConvertBack(null, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
     }
 }

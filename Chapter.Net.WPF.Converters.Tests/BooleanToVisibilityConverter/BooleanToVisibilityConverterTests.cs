@@ -4,6 +4,7 @@
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Windows;
 using NUnit.Framework;
 
@@ -43,5 +44,25 @@ public class BooleanToVisibilityConverterTests : SingleAndMultiValueConverterTes
         _target.MixedIs = mixedIs;
 
         MultiConvert(input, expectation);
+    }
+
+    [TestCase(Visibility.Visible, Visibility.Collapsed, Visibility.Visible, true)]
+    [TestCase(Visibility.Collapsed, Visibility.Visible, Visibility.Collapsed, true)]
+    [TestCase(Visibility.Visible, Visibility.Collapsed, "", false)]
+    [TestCase(Visibility.Visible, Visibility.Collapsed, Visibility.Collapsed, false)]
+    [TestCase(Visibility.Collapsed, Visibility.Visible, Visibility.Visible, false)]
+    [TestCase(Visibility.Collapsed, Visibility.Visible, "", false)]
+    public void ConvertBack_Called_Converts(Visibility trueIs, Visibility falseIs, object input, object expectation)
+    {
+        _target.TrueIs = trueIs;
+        _target.FalseIs = falseIs;
+
+        ConvertBack(input, expectation);
+    }
+
+    [Test]
+    public void MultiConvertBack_Called_RaisesException()
+    {
+        Assert.That(() => MultiConvertBack(null, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
     }
 }

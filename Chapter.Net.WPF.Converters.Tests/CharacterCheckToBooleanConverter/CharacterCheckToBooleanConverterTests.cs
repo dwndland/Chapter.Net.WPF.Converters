@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using NUnit.Framework;
+using System;
 
 // ReSharper disable once CheckNamespace
 
@@ -103,5 +104,17 @@ public class CharacterCheckToBooleanConverterTests : SingleAndMultiValueConverte
         _target.MixedIs = mixedIs;
 
         MultiConvert(input, result);
+    }
+
+    [Test]
+    public void ConvertBack_Called_RaisesException()
+    {
+        Assert.That(() => ConvertBack(null, ""), Throws.TypeOf<NotImplementedException>());
+    }
+
+    [Test]
+    public void MultiConvertBack_Called_RaisesException()
+    {
+        Assert.That(() => MultiConvertBack(null, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
     }
 }
