@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Data;
 
@@ -16,23 +17,24 @@ namespace Chapter.Net.WPF.Converters;
 ///     Converts the given date time to universal or local time.
 /// </summary>
 [ValueConversion(typeof(DateTime), typeof(DateTime))]
-public class DateTimeUtcConverter : IValueConverter
+public class DateTimeUtcConverter : ValueConverter
 {
     /// <summary>
     ///     Defines if the value shall be converted to universal time. If false its to local time.
     /// </summary>
     /// <value>Default: false.</value>
+    [DefaultValue(false)]
     public bool ToUniversalTime { get; set; } = false;
 
     /// <summary>
-    ///     Converts the given date time to UTC or local time.
+    ///     Converts the given date time to universal or local time.
     /// </summary>
-    /// <param name="value">The date and time to convert.</param>
+    /// <param name="value">The value to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The converted date and time.</returns>
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is DateTime dateTime)
             return ToUniversalTime ? dateTime.ToUniversalTime() : dateTime.ToLocalTime();
@@ -40,14 +42,14 @@ public class DateTimeUtcConverter : IValueConverter
     }
 
     /// <summary>
-    ///     Converts the given date time to UTC or local time.
+    ///     Converts the given date time to universal or local time.
     /// </summary>
-    /// <param name="value">The date and time to convert.</param>
+    /// <param name="value">The value to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The converted date and time.</returns>
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is DateTime dateTime)
             return ToUniversalTime ? dateTime.ToLocalTime() : dateTime.ToUniversalTime();

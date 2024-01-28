@@ -16,7 +16,7 @@ namespace Chapter.Net.WPF.Converters;
 ///     Converts an integer to its boolean representation and back.
 /// </summary>
 [ValueConversion(typeof(int), typeof(bool))]
-public class IntegerToBooleanConverter : IValueConverter
+public class IntegerToBooleanConverter : SingleAndMultiValueConverter
 {
     /// <summary>
     ///     Converts an integer to its boolean representation.

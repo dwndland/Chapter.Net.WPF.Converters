@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Data;
 
@@ -13,32 +14,34 @@ using System.Windows.Data;
 namespace Chapter.Net.WPF.Converters;
 
 /// <summary>
-///     Converts the given time only to a string by Format.
+///     Formats a single TimeOnly to a string.
 /// </summary>
 [ValueConversion(typeof(TimeOnly), typeof(string))]
-public class TimeOnlyToStringConverter : IValueConverter
+public class TimeOnlyToStringConverter : ValueConverter
 {
     /// <summary>
     ///     Defines how the given TimeOnly shall be converted.
     /// </summary>
     /// <value>Default: TimeOnlyFormat.Formatter.</value>
+    [DefaultValue(TimeOnlyFormat.Formatter)]
     public TimeOnlyFormat Format { get; set; } = TimeOnlyFormat.Formatter;
 
     /// <summary>
     ///     The formatter to use if the Format is set to TimeOnlyFormat.Formatter.
     /// </summary>
     /// <value>Default: "t".</value>
+    [DefaultValue("t")]
     public string Formatter { get; set; } = "t";
 
     /// <summary>
-    ///     Converts the given time only to a string by <see cref="Format" />.
+    ///     Formats a single TimeOnly to a string.
     /// </summary>
-    /// <param name="value">The time only.</param>
+    /// <param name="value">The value to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The formatted time only; otherwise string.Empty.</returns>
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is not TimeOnly timeOnly)
             return string.Empty;
@@ -50,19 +53,5 @@ public class TimeOnlyToStringConverter : IValueConverter
             TimeOnlyFormat.ToLongTimeString => timeOnly.ToLongTimeString(),
             _ => timeOnly.ToString(CultureInfo.CurrentCulture)
         };
-    }
-
-    /// <summary>
-    ///     Not implemented.
-    /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetType">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The TimeOnlyToStringConverter.ConvertBack is not implemented.</exception>
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
     }
 }

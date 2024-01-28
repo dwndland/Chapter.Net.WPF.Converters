@@ -17,7 +17,7 @@ namespace Chapter.Net.WPF.Converters;
 ///     Equals two values and returns its visibility representation.
 /// </summary>
 [ValueConversion(typeof(object), typeof(Visibility), ParameterType = typeof(object))]
-public class EqualsToVisibilityConverter : IValueConverter
+public class EqualsToVisibilityConverter : SingleAndMultiValueConverter
 {
     /// <summary>
     ///     The visibility to return if equals is true.

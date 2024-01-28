@@ -16,7 +16,7 @@ namespace Chapter.Net.WPF.Converters;
 ///     Equals two values and returns its result.
 /// </summary>
 [ValueConversion(typeof(object), typeof(bool), ParameterType = typeof(object))]
-public class EqualsToBooleanConverter : IValueConverter
+public class EqualsToBooleanConverter : SingleAndMultiValueConverter
 {
     /// <summary>
     ///     The value to return if equals is true; otherwise the opposite.

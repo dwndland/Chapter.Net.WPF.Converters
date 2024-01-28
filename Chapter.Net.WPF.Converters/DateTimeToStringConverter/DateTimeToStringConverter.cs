@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows.Data;
 
@@ -13,44 +14,48 @@ using System.Windows.Data;
 namespace Chapter.Net.WPF.Converters;
 
 /// <summary>
-///     Converts the given date time to a string by Format.
+///     Formats a single DateTime to a string.
 /// </summary>
 [ValueConversion(typeof(DateTime), typeof(string))]
-public class DateTimeToStringConverter : IValueConverter
+public class DateTimeToStringConverter : ValueConverter
 {
     /// <summary>
     ///     Defines how the given DateTime shall be converted.
     /// </summary>
     /// <value>Default: DateTimeFormat.Formatter.</value>
+    [DefaultValue(DateTimeFormat.Formatter)]
     public DateTimeFormat Format { get; set; } = DateTimeFormat.Formatter;
 
     /// <summary>
     ///     The formatter to use if the Format is set to DateTimeFormat.Formatter.
     /// </summary>
     /// <value>Default: "g".</value>
+    [DefaultValue("g")]
     public string Formatter { get; set; } = "g";
 
     /// <summary>
     ///     Defines if the date time shall be converted to local time.
     /// </summary>
     /// <value>Default: false.</value>
+    [DefaultValue(false)]
     public bool ToLocalTime { get; set; } = false;
 
     /// <summary>
     ///     Defines if the date time shall be converted to universal time.
     /// </summary>
     /// <value>Default: false.</value>
+    [DefaultValue(false)]
     public bool ToUniversalTime { get; set; } = false;
 
     /// <summary>
-    ///     Converts the given date time to a string by <see cref="Format" />.
+    ///     Formats a single DateTime to a string.
     /// </summary>
-    /// <param name="value">The date time.</param>
+    /// <param name="value">The value to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The formatted date time; otherwise string.Empty.</returns>
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is not DateTime dateTime)
             return string.Empty;
@@ -74,19 +79,5 @@ public class DateTimeToStringConverter : IValueConverter
             DateTimeFormat.LongTimeString => dateTime.ToLongTimeString(),
             _ => dateTime.ToString(CultureInfo.CurrentCulture)
         };
-    }
-
-    /// <summary>
-    ///     Not implemented.
-    /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetType">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The DateTimeToStringConverter.ConvertBack is not implemented.</exception>
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
     }
 }

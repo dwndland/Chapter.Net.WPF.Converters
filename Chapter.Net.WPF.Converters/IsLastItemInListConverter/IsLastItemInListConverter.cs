@@ -18,17 +18,17 @@ namespace Chapter.Net.WPF.Converters;
 ///     Checks if the given item container is the last in the list.
 /// </summary>
 [ValueConversion(typeof(DependencyObject), typeof(bool))]
-public class IsLastItemInListConverter : IValueConverter
+public class IsLastItemInListConverter : ValueConverter
 {
     /// <summary>
     ///     Checks if the given item container is the last in the list.
     /// </summary>
-    /// <param name="value">The item container to check its position.</param>
+    /// <param name="value">The value to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>True if the given container is the last in the list; otherwise false.</returns>
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is not DependencyObject container)
             return false;
@@ -38,19 +38,5 @@ public class IsLastItemInListConverter : IValueConverter
             return false;
 
         return itemsControl.ItemContainerGenerator.IndexFromContainer(container) == itemsControl.Items.Count - 1;
-    }
-
-    /// <summary>
-    ///     Not implemented.
-    /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetType">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The IsLastItemInListConverter.ConvertBack is not implemented.</exception>
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
     }
 }
