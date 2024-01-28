@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added BooleanToBooleanConverter to convert a single boolean or a list of booleans to another single boolean representation.
 - Added a multi boolean to integer conversion into the BooleanToIntegerConverter.
 - Added BooleanToVisibilityConverter to convert a single boolean or a list of booleans into a Visibility representation.
+- Added CharacterCheckToBooleanConverter to execute a check on a single character or list of characters and returns a boolean representation of that result.
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
