@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added BooleanToVisibilityConverter to convert a single boolean or a list of booleans into a Visibility representation.
 - Added CharacterCheckToBooleanConverter to execute a check on a single character or list of characters and returns a boolean representation of that result.
 - Added CharacterCheckToVisibilityConverter to execute a check on a single character or list of characters and returns a Visibility representation of that result.
+- Added AcceptNullParts to the ConcatenateStringConverter to allow null part be part of the string.
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.

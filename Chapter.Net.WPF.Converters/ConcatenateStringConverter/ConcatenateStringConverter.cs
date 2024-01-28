@@ -15,45 +15,35 @@ using System.Windows.Data;
 namespace Chapter.Net.WPF.Converters;
 
 /// <summary>
-///     Concatenates all given values to a single string.
+///     Concatenates all given values to a single string with an optional configurable separator.
 /// </summary>
 [ValueConversion(typeof(object[]), typeof(string))]
-public class ConcatenateStringConverter : IMultiValueConverter
+public class ConcatenateStringConverter : MultiValueConverter
 {
     /// <summary>
-    ///     Gets or sets the separator to use to concatenate the values with.
+    ///     The separator to use to concatenate the values.
     /// </summary>
     /// <value>Default: "".</value>
     [DefaultValue("")]
     public string Separator { get; set; } = string.Empty;
 
     /// <summary>
-    ///     Concatenates all given values to a single string.
+    ///     Indicator if null parts of the values shall be filtered out or not.
     /// </summary>
-    /// <param name="values">The values to connect.</param>
+    /// <value>Default: false.</value>
+    [DefaultValue(false)]
+    public bool AcceptNullParts { get; set; } = false;
+
+    /// <summary>
+    ///     Concatenates all given values to a single string with an optional configurable separator.
+    /// </summary>
+    /// <param name="values">The values to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The concatenated values as string.</returns>
-    public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
     {
-        if (values == null)
-            return string.Empty;
-
-        return string.Join(Separator, values.Where(x => x != null));
-    }
-
-    /// <summary>
-    ///     Not implemented.
-    /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetTypes">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The ConcatenateStringConverter.ConvertBack is not implemented.</exception>
-    public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
+        return values == null ? string.Empty : string.Join(Separator, values.Where(x => AcceptNullParts || x != null));
     }
 }
