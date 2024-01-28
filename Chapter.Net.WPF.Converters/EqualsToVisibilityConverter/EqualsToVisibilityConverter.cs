@@ -7,6 +7,7 @@
 using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Data;
 
@@ -18,6 +19,7 @@ namespace Chapter.Net.WPF.Converters;
 ///     Compares a single value to a variable or a list of values to each other and returns its Visibility representation.
 /// </summary>
 [ValueConversion(typeof(object), typeof(Visibility))]
+[ValueConversion(typeof(object[]), typeof(Visibility))]
 public class EqualsToVisibilityConverter : SingleAndMultiValueConverter
 {
     /// <summary>
@@ -55,16 +57,22 @@ public class EqualsToVisibilityConverter : SingleAndMultiValueConverter
     }
 
     /// <summary>
-    ///     ConvertBack is not implemented.
+    ///     Compares a list of values to each other and returns its Visibility representation.
     /// </summary>
-    /// <param name="value">Unused.</param>
+    /// <param name="values">The values to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The EqualsToVisibilityConverter.ConvertBack is not implemented.</exception>
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
     {
-        throw new NotImplementedException();
+        if (values == null)
+            return IsNotEqual;
+
+        if (values.Length == 0)
+            return IsNotEqual;
+
+        var allEqual = values.All(o => Equals(o, values[0]));
+        return allEqual ? IsEqual : IsNotEqual;
     }
 }

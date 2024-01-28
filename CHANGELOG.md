@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed BooleanToVisibilityInvertedConverter, thats repaced by BooleanToVisibilityConverter.
 - Removed MultiBooleanToVisibilityConverter, thats integrated into the BooleanToVisibilityConverter.
 - Removed MultiEqualsToBooleanConverter, thats integrated into the EqualsToBooleanConverter.
+- Removed MultiEqualsToVisibilityConverter, thats integrated into the EqualsToVisibilityConverter.
 ### Supported .Net Versions
 - .Net 6
 - .Net 7
