@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added CharacterCheckToVisibilityConverter to execute a check on a single character or list of characters and returns a Visibility representation of that result.
 - Added AcceptNullParts to the ConcatenateStringConverter to allow null part be part of the string.
 - Added DelegateConverter that provides a delegate to convert a single value or a list of values.
+- Added DelegateToBooleanConverter that provides a delegate to convert a single value or a list of values to boolean.
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
