@@ -92,11 +92,11 @@ public class BooleanToVisibilityConverter : SingleAndMultiValueConverter
     public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is not Visibility visibility)
-            return FalseIs;
+            return false;
         if (visibility == TrueIs)
             return true;
         if (visibility == FalseIs)
             return false;
-        return FalseIs;
+        return false;
     }
 }
