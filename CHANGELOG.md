@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added DelegateToBooleanConverter that provides a delegate to convert a single value or a list of values to boolean.
 - Added DelegateToVisibilityConverter that provides a delegate to convert a single value or a list of values to Visibility.
 - Added DoubleComparisonToBooleanConverter to execute a comparison on a single double or list of doubles to a boolean representation.
+- Added DoubleComparisonToVisibilityConverter to execute a comparison on a single Visibility or list of Visibilities to a boolean representation.
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
