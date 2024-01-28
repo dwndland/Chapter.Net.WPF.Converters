@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class DateTimeToStringConverterTests : ConverterTester<DateTimeToStringConverter>
+public class DateTimeToStringConverterTests : ValueConverterTester<DateTimeToStringConverter>
 {
     [TestCase(13)]
     [TestCase("Anything")]

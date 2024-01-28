@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class PathToStringConverterTests : ConverterTester<PathToStringConverter>
+public class PathToStringConverterTests : ValueConverterTester<PathToStringConverter>
 {
     [TestCase(PathSection.Drive, null, "")]
     [TestCase(PathSection.Drive, @"C:\Drive\File.txt", @"C:\")]

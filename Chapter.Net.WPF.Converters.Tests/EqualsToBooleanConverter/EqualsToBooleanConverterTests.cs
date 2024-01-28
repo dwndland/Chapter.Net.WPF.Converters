@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class EqualsToBooleanConverterTests : ConverterTester<EqualsToBooleanConverter>
+public class EqualsToBooleanConverterTests : ValueConverterTester<EqualsToBooleanConverter>
 {
     [TestCase(1, 1, true, true)]
     [TestCase(1, 1, false, false)]

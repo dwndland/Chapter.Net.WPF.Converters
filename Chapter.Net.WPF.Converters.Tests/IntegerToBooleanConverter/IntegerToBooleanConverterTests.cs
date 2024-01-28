@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class IntegerToBooleanConverterTests : ConverterTester<IntegerToBooleanConverter>
+public class IntegerToBooleanConverterTests : ValueConverterTester<IntegerToBooleanConverter>
 {
     [TestCase(0, false)]
     [TestCase(1, true)]

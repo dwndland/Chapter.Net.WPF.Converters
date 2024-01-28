@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class TimeOnlyToStringConverterTests : ConverterTester<TimeOnlyToStringConverter>
+public class TimeOnlyToStringConverterTests : ValueConverterTester<TimeOnlyToStringConverter>
 {
     [TestCase(13)]
     [TestCase("Anything")]

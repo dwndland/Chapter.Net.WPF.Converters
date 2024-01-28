@@ -12,7 +12,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class EqualsToVisibilityConverterTests : ConverterTester<EqualsToVisibilityConverter>
+public class EqualsToVisibilityConverterTests : ValueConverterTester<EqualsToVisibilityConverter>
 {
     [TestCase(1, 1, Visibility.Visible, Visibility.Collapsed, Visibility.Visible)]
     [TestCase(1, 1, Visibility.Hidden, Visibility.Collapsed, Visibility.Hidden)]

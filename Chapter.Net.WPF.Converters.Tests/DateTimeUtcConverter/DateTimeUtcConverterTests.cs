@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class DateTimeUtcConverterTests : ConverterTester<DateTimeUtcConverter>
+public class DateTimeUtcConverterTests : ValueConverterTester<DateTimeUtcConverter>
 {
     [TestCase(13)]
     [TestCase("Anything")]

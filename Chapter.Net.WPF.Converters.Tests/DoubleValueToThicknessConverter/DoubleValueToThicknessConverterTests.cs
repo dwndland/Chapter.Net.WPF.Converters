@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class DoubleValueToThicknessConverterTests : ConverterTester<DoubleValueToThicknessConverter>
+public class DoubleValueToThicknessConverterTests : ValueConverterTester<DoubleValueToThicknessConverter>
 {
     [TestCase(13)]
     [TestCase("Anything")]
