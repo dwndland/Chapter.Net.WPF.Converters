@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added DoubleComparisonToBooleanConverter to execute a comparison on a single double or list of doubles to a boolean representation.
 - Added DoubleComparisonToVisibilityConverter to execute a comparison on a single Visibility or list of Visibilities to a boolean representation.
 - Added DoubleMathConverter to do a simple calculation with the given value as double.
+- Added DoubleToStringConverter to format a double to string.
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
