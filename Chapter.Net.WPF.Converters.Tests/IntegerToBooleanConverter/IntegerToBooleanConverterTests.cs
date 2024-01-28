@@ -5,12 +5,14 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using NUnit.Framework;
+using System.Windows;
+using System;
 
 // ReSharper disable once CheckNamespace
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class IntegerToBooleanConverterTests : ValueConverterTester<IntegerToBooleanConverter>
+public class IntegerToBooleanConverterTests : SingleAndMultiValueConverterTester<IntegerToBooleanConverter>
 {
     [TestCase(0, false)]
     [TestCase(1, true)]
@@ -18,7 +20,7 @@ public class IntegerToBooleanConverterTests : ValueConverterTester<IntegerToBool
     [TestCase(-5, true)]
     [TestCase("Dummy", true)]
     [TestCase(null, true)]
-    public void ConvertBack_CalledWithExpectedFormats_Expects(object input, bool expected)
+    public void Convert_CalledWithExpectedFormats_Expects(object input, bool expected)
     {
         Convert(input, expected);
     }
@@ -29,8 +31,31 @@ public class IntegerToBooleanConverterTests : ValueConverterTester<IntegerToBool
     [TestCase(-5, 1)]
     [TestCase("Dummy", 1)]
     [TestCase(null, 1)]
-    public void Convert_CalledWithExpectedFormats_Expects(object input, int expected)
+    public void ConvertBack_CalledWithExpectedFormats_Expects(object input, int expected)
     {
         ConvertBack(input, expected);
+    }
+
+    [TestCase(null, false, 0, 0, 0)]
+    [TestCase(null, true, 1, 1, 1)]
+    [TestCase(null, true, -5, -5, -5)]
+    [TestCase(null, false, 14.5, 14.5, 14.5)]
+    [TestCase(null, false, "Dummy", "Dummy", "Dummy")]
+    [TestCase(null, false, null, null, null)]
+    [TestCase(null, false, null, null, null)]
+    [TestCase(true, true, 1, 0, 1)]
+    [TestCase(false, false, 1, 0, 1)]
+    [TestCase(null, null, 1, 0, 1)]
+    public void MultiConvert_CalledWithExpectedFormats_Expects(bool? mixedIs, bool? expected, params object[] input)
+    {
+        _target.MixedIs = mixedIs;
+
+        MultiConvert(input, expected);
+    }
+
+    [Test]
+    public void MultiConvertBack_Called_RaisesException()
+    {
+        Assert.That(() => MultiConvertBack(Visibility.Hidden, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
     }
 }

@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added IntegerComparisonToBooleanConverter to execute a comparison on a single integer or list of integers to a boolean representation.
 - Added IntegerComparisonToVisibilityConverter to execute a comparison on a single integer or list of integers to a Visibility representation.
 - Added IntegerMathConverter to do a simple calculation with the given value as integer.
+- Added a multi integer to boolean conversion into the IntegerToBooleanConverter.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
