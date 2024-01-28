@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added DoubleComparisonToVisibilityConverter to execute a comparison on a single Visibility or list of Visibilities to a boolean representation.
 - Added DoubleMathConverter to do a simple calculation with the given value as double.
 - Added DoubleToStringConverter to format a double to string.
+- Added multi conversion to the EqualsToBooleanConverter.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
@@ -29,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
 - Removed BooleanToVisibilityInvertedConverter, thats repaced by BooleanToVisibilityConverter.
 - Removed MultiBooleanToVisibilityConverter, thats integrated into the BooleanToVisibilityConverter.
+- Removed MultiEqualsToBooleanConverter, thats integrated into the EqualsToBooleanConverter.
 ### Supported .Net Versions
 - .Net 6
 - .Net 7
