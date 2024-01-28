@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added DoubleToStringConverter to format a double to string.
 - Added multi conversion to the EqualsToBooleanConverter.
 - Added IntegerComparisonToBooleanConverter to execute a comparison on a single integer or list of integers to a boolean representation.
+- Added IntegerComparisonToVisibilityConverter to execute a comparison on a single integer or list of integers to a Visibility representation.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
