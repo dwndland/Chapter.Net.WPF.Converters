@@ -12,16 +12,31 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class EqualsToVisibilityConverterTests : ValueConverterTester<EqualsToVisibilityConverter>
+public class EqualsToVisibilityConverterTests : SingleAndMultiValueConverterTester<EqualsToVisibilityConverter>
 {
     [TestCase(1, 1, Visibility.Visible, Visibility.Collapsed, Visibility.Visible)]
-    [TestCase(1, 1, Visibility.Hidden, Visibility.Collapsed, Visibility.Hidden)]
     [TestCase(1, 1, Visibility.Collapsed, Visibility.Visible, Visibility.Collapsed)]
-    [TestCase("First", "First", Visibility.Visible, Visibility.Collapsed, Visibility.Visible)]
-    [TestCase("First", "First", Visibility.Hidden, Visibility.Collapsed, Visibility.Hidden)]
-    [TestCase("First", "First", Visibility.Collapsed, Visibility.Visible, Visibility.Collapsed)]
+    [TestCase(1, 1, Visibility.Hidden, Visibility.Collapsed, Visibility.Hidden)]
+    [TestCase(1, 1.0, Visibility.Visible, Visibility.Collapsed, Visibility.Collapsed)]
     [TestCase(1, 1.0, Visibility.Collapsed, Visibility.Visible, Visibility.Visible)]
-    [TestCase(1, 1.0, Visibility.Collapsed, Visibility.Hidden, Visibility.Hidden)]
+    [TestCase(1, 1.0, Visibility.Visible, Visibility.Hidden, Visibility.Hidden)]
+    [TestCase(1, 2, Visibility.Visible, Visibility.Collapsed, Visibility.Collapsed)]
+    [TestCase(1, 2, Visibility.Collapsed, Visibility.Visible, Visibility.Visible)]
+    [TestCase(1, 2, Visibility.Visible, Visibility.Hidden, Visibility.Hidden)]
+    [TestCase("First", "First", Visibility.Visible, Visibility.Collapsed, Visibility.Visible)]
+    [TestCase("First", "First", Visibility.Collapsed, Visibility.Visible, Visibility.Collapsed)]
+    [TestCase("First", "First", Visibility.Hidden, Visibility.Collapsed, Visibility.Hidden)]
+    [TestCase("First", "Second", Visibility.Visible, Visibility.Collapsed, Visibility.Collapsed)]
+    [TestCase("First", "Second", Visibility.Collapsed, Visibility.Visible, Visibility.Visible)]
+    [TestCase("First", "Second", Visibility.Visible, Visibility.Hidden, Visibility.Hidden)]
+    public void Convert_Called_Compares(object first, object second, Visibility isEqual, Visibility isNotEqual, Visibility expectation)
+    {
+        _target.IsEqual = isEqual;
+        _target.IsNotEqual = isNotEqual;
+        _target.CompareWith = second;
+
+        Convert(first, expectation);
+    }
     [TestCase(1, 1.0, Visibility.Visible, Visibility.Collapsed, Visibility.Collapsed)]
     [TestCase(1, 2, Visibility.Collapsed, Visibility.Visible, Visibility.Visible)]
     [TestCase(1, 2, Visibility.Collapsed, Visibility.Hidden, Visibility.Hidden)]

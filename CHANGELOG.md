@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
+- Move the parameter for the EqualsToVisibilityConverter to a converter property.
+- Change the configurable return value for the EqualsToVisibilityConverter from a single to multiple properties.
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.

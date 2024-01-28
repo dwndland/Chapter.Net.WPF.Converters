@@ -5,6 +5,7 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -14,34 +15,43 @@ using System.Windows.Data;
 namespace Chapter.Net.WPF.Converters;
 
 /// <summary>
-///     Equals two values and returns its visibility representation.
+///     Compares a single value to a variable or a list of values to each other and returns its Visibility representation.
 /// </summary>
-[ValueConversion(typeof(object), typeof(Visibility), ParameterType = typeof(object))]
+[ValueConversion(typeof(object), typeof(Visibility))]
 public class EqualsToVisibilityConverter : SingleAndMultiValueConverter
 {
     /// <summary>
-    ///     The visibility to return if equals is true.
+    ///     The return if equals is true.
     /// </summary>
     /// <value>Default: Visibility.Visible.</value>
+    [DefaultValue(Visibility.Visible)]
     public Visibility IsEqual { get; set; } = Visibility.Visible;
 
     /// <summary>
-    ///     The visibility to return if equals is false.
+    ///     The return if equals is false.
     /// </summary>
     /// <value>Default: Visibility.Collapsed.</value>
+    [DefaultValue(Visibility.Collapsed)]
     public Visibility IsNotEqual { get; set; } = Visibility.Collapsed;
 
     /// <summary>
-    ///     Equals two values and returns its visibility representation.
+    ///     The value to compare with.
     /// </summary>
-    /// <param name="value">The first value.</param>
+    /// <value>Default: null.</value>
+    [DefaultValue(null)]
+    public object CompareWith { get; set; } = null;
+
+    /// <summary>
+    ///     Compares a single value to a variable and returns its Visibility representation.
+    /// </summary>
+    /// <param name="value">The value to convert.</param>
     /// <param name="targetType">Unused.</param>
-    /// <param name="parameter">The second value.</param>
+    /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The visibility representation of the equals comparison.</returns>
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        return Equals(value, parameter) ? IsEqual : IsNotEqual;
+        return Equals(value, CompareWith) ? IsEqual : IsNotEqual;
     }
 
     /// <summary>
