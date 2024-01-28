@@ -14,24 +14,14 @@ public class ValueConverterTester<T> : ConverterTester<T> where T : IValueConver
 {
     protected void Convert(object value, object expectedResult)
     {
-        Convert(value, null, expectedResult);
-    }
-
-    protected void Convert(object value, object parameter, object expectedResult)
-    {
-        var result = _target.Convert(value, expectedResult?.GetType(), parameter, CultureInfo.CurrentCulture);
+        var result = _target.Convert(value, expectedResult?.GetType(), null, CultureInfo.CurrentCulture);
 
         Assert.That(result, Is.EqualTo(expectedResult));
     }
 
     protected void ConvertBack(object value, object expectedResult)
     {
-        ConvertBack(value, null, expectedResult);
-    }
-
-    protected void ConvertBack(object value, object parameter, object expectedResult)
-    {
-        var result = _target.ConvertBack(value, expectedResult?.GetType(), parameter, CultureInfo.CurrentCulture);
+        var result = _target.ConvertBack(value, expectedResult?.GetType(), null, CultureInfo.CurrentCulture);
 
         Assert.That(result, Is.EqualTo(expectedResult));
     }
