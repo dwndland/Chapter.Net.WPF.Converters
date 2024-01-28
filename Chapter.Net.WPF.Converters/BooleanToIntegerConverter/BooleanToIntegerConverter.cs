@@ -5,7 +5,9 @@
 // -----------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Data;
 
 // ReSharper disable once CheckNamespace
@@ -13,20 +15,28 @@ using System.Windows.Data;
 namespace Chapter.Net.WPF.Converters;
 
 /// <summary>
-///     Converts an boolean to its integer representation and back.
+///     Converts a single boolean or a list of booleans to an integer representation.
 /// </summary>
 [ValueConversion(typeof(bool), typeof(int))]
-public class BooleanToIntegerConverter : IValueConverter
+[ValueConversion(typeof(bool[]), typeof(int))]
+public class BooleanToIntegerConverter : SingleAndMultiValueConverter
 {
     /// <summary>
-    ///     Converts a boolean to its integer representation.
+    ///     The return to use if the booleans are mixed.
     /// </summary>
-    /// <param name="value">The boolean to convert.</param>
+    /// <value>Default: 0.</value>
+    [DefaultValue(0)]
+    public int MixedIs { get; set; } = 0;
+
+    /// <summary>
+    ///     Converts a single boolean to an integer representation.
+    /// </summary>
+    /// <param name="value">The value to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The converted integer value.</returns>
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is bool boolean)
             return System.Convert.ToInt32(boolean);
@@ -34,14 +44,36 @@ public class BooleanToIntegerConverter : IValueConverter
     }
 
     /// <summary>
-    ///     Converts an integer to its boolean representation.
+    ///     Converts a list of booleans to an integer representation.
     /// </summary>
-    /// <param name="value">The integer to convert.</param>
+    /// <param name="values">The values to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The converted boolean value.</returns>
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (values == null)
+            return 0;
+
+        var booleans = values.OfType<bool>().Distinct().ToList();
+        return booleans.Count switch
+        {
+            0 => 0,
+            > 1 => MixedIs,
+            _ => System.Convert.ToInt32(booleans[0])
+        };
+    }
+
+    /// <summary>
+    ///     Converts a single integer back to it boolean representation.
+    /// </summary>
+    /// <param name="value">The value to convert.</param>
+    /// <param name="targetType">Unused.</param>
+    /// <param name="parameter">Unused.</param>
+    /// <param name="culture">Unused.</param>
+    /// <returns>The converted value.</returns>
+    public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is int integer)
             return System.Convert.ToBoolean(integer);

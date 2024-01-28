@@ -10,7 +10,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class BooleanToIntegerConverterTests : ConverterTester<BooleanToIntegerConverter>
+public class BooleanToIntegerConverterTests : SingleAndMultiValueConverterTester<BooleanToIntegerConverter>
 {
     [TestCase(false, 0)]
     [TestCase(true, 1)]
@@ -21,6 +21,21 @@ public class BooleanToIntegerConverterTests : ConverterTester<BooleanToIntegerCo
     public void Convert_CalledWithExpectedFormats_Expects(object input, int expected)
     {
         Convert(input, expected);
+    }
+
+    [TestCase(0, 0, false, false, false)]
+    [TestCase(0, 1, true, true, true)]
+    [TestCase(0, 1, 14.5, true, true)]
+    [TestCase(0, 1, -5, true, true)]
+    [TestCase(0, 1, "Dummy", true, true)]
+    [TestCase(0, 1, null, true, true)]
+    [TestCase(0, 0, true, false, true)]
+    [TestCase(1, 1, true, false, true)]
+    public void MultiConvert_CalledWithExpectedFormats_Expects(int mixedIs, int expected, params object[] input)
+    {
+        _target.MixedIs = mixedIs;
+
+        MultiConvert(input, expected);
     }
 
     [TestCase(0, false)]
