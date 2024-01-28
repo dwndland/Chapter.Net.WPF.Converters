@@ -10,9 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added base classes for value and  multi value converters and their combination for easy skipping of convert back.
 - Added BooleanToBooleanConverter to convert a single boolean or a list of booleans to another single boolean representation.
 - Added a multi boolean to integer conversion into the BooleanToIntegerConverter.
+- Added BooleanToVisibilityConverter to convert a single boolean or a list of booleans into a Visibility representation.
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
+- Removed BooleanToVisibilityInvertedConverter, thats repaced by BooleanToVisibilityConverter.
+- Removed MultiBooleanToVisibilityConverter, thats integrated into the BooleanToVisibilityConverter.
 ### Supported .Net Versions
 - .Net 6
 - .Net 7
