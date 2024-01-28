@@ -82,6 +82,6 @@ public class IntegerComparisonToVisibilityConverterTests : SingleAndMultiValueCo
     [Test]
     public void MultiConvertBack_Called_RaisesException()
     {
-        Assert.That(() => MultiConvertBack(Visibility.Hidden, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
+        Assert.That(() => MultiConvertBack(Visibility.Hidden, []), Throws.TypeOf<NotImplementedException>());
     }
 }

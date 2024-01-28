@@ -93,7 +93,7 @@ public class DoubleToStringConverter : ValueConverter
 
         var afterDecimalString = afterDecimal.ToString();
         if (afterDecimalString.Length > DecimalCount)
-            afterDecimalString = afterDecimalString.Substring(0, DecimalCount);
+            afterDecimalString = afterDecimalString[..DecimalCount];
 
         return beforeDecimal.PadLeft(Digits, '0') +
                separator +

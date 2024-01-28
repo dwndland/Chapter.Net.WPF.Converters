@@ -54,6 +54,6 @@ public class IsNullToBooleanConverterTests : SingleAndMultiValueConverterTester<
     [Test]
     public void MultiConvertBack_Called_RaisesException()
     {
-        Assert.That(() => MultiConvertBack(null, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
+        Assert.That(() => MultiConvertBack(null, []), Throws.TypeOf<NotImplementedException>());
     }
 }

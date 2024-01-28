@@ -38,6 +38,6 @@ public class SingleAndMultiValueConverterTester<T> : ConverterTester<T> where T 
     {
         var result = _target.ConvertBack(value, expectedResults.Select(x => x.GetType()).ToArray(), null, CultureInfo.CurrentCulture);
 
-        Assert.IsTrue(result.SequenceEqual(expectedResults));
+        Assert.That(result, Is.EqualTo(expectedResults));
     }
 }
