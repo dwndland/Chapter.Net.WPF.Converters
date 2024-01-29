@@ -106,6 +106,7 @@ public class NumberCheckToBooleanConverter : SingleAndMultiValueConverter
 
     private bool? IsNegative(object value)
     {
+#if NET6_0
         if (value is int converted1)
             return converted1 < 0 ? TrueIs : FalseIs;
         if (value is short converted3)
@@ -123,6 +124,25 @@ public class NumberCheckToBooleanConverter : SingleAndMultiValueConverter
         if (value is BigInteger converted12)
             return converted12 < 0 ? TrueIs : FalseIs;
         return FalseIs;
+#else
+        if (value is int converted1)
+            return int.IsNegative(converted1) ? TrueIs : FalseIs;
+        if (value is short converted3)
+            return short.IsNegative(converted3) ? TrueIs : FalseIs;
+        if (value is double converted4)
+            return double.IsNegative(converted4) ? TrueIs : FalseIs;
+        if (value is decimal converted6)
+            return decimal.IsNegative(converted6) ? TrueIs : FalseIs;
+        if (value is float converted7)
+            return float.IsNegative(converted7) ? TrueIs : FalseIs;
+        if (value is sbyte converted9)
+            return sbyte.IsNegative(converted9) ? TrueIs : FalseIs;
+        if (value is long converted10)
+            return long.IsNegative(converted10) ? TrueIs : FalseIs;
+        if (value is BigInteger converted12)
+            return BigInteger.IsNegative(converted12) ? TrueIs : FalseIs;
+        return FalseIs;
+#endif
     }
 
     private bool? IsMaxValue(object value)
@@ -181,6 +201,7 @@ public class NumberCheckToBooleanConverter : SingleAndMultiValueConverter
 
     private bool? IsEven(object value)
     {
+#if NET6_0
         if (value is int converted1)
             return converted1 % 2 == 0 ? TrueIs : FalseIs;
         if (value is uint converted2)
@@ -206,10 +227,38 @@ public class NumberCheckToBooleanConverter : SingleAndMultiValueConverter
         if (value is BigInteger converted12)
             return converted12 % 2 == 0 ? TrueIs : FalseIs;
         return FalseIs;
+#else
+        if (value is int converted1)
+            return int.IsEvenInteger(converted1) ? TrueIs : FalseIs;
+        if (value is uint converted2)
+            return uint.IsEvenInteger(converted2) ? TrueIs : FalseIs;
+        if (value is short converted3)
+            return short.IsEvenInteger(converted3) ? TrueIs : FalseIs;
+        if (value is double converted4)
+            return double.IsEvenInteger(converted4) ? TrueIs : FalseIs;
+        if (value is byte converted5)
+            return byte.IsEvenInteger(converted5) ? TrueIs : FalseIs;
+        if (value is decimal converted6)
+            return decimal.IsEvenInteger(converted6) ? TrueIs : FalseIs;
+        if (value is float converted7)
+            return float.IsEvenInteger(converted7) ? TrueIs : FalseIs;
+        if (value is ulong converted8)
+            return ulong.IsEvenInteger(converted8) ? TrueIs : FalseIs;
+        if (value is sbyte converted9)
+            return sbyte.IsEvenInteger(converted9) ? TrueIs : FalseIs;
+        if (value is long converted10)
+            return long.IsEvenInteger(converted10) ? TrueIs : FalseIs;
+        if (value is ushort converted11)
+            return ushort.IsEvenInteger(converted11) ? TrueIs : FalseIs;
+        if (value is BigInteger converted12)
+            return BigInteger.IsEvenInteger(converted12) ? TrueIs : FalseIs;
+        return FalseIs;
+#endif
     }
 
     private bool? IsOdd(object value)
     {
+#if NET6_0
         if (value is int converted1)
             return converted1 % 2 != 0 ? TrueIs : FalseIs;
         if (value is uint converted2)
@@ -235,6 +284,33 @@ public class NumberCheckToBooleanConverter : SingleAndMultiValueConverter
         if (value is BigInteger converted12)
             return converted12 % 2 != 0 ? TrueIs : FalseIs;
         return FalseIs;
+#else
+        if (value is int converted1)
+            return int.IsOddInteger(converted1) ? TrueIs : FalseIs;
+        if (value is uint converted2)
+            return uint.IsOddInteger(converted2) ? TrueIs : FalseIs;
+        if (value is short converted3)
+            return short.IsOddInteger(converted3) ? TrueIs : FalseIs;
+        if (value is double converted4)
+            return double.IsOddInteger(converted4) ? TrueIs : FalseIs;
+        if (value is byte converted5)
+            return byte.IsOddInteger(converted5) ? TrueIs : FalseIs;
+        if (value is decimal converted6)
+            return decimal.IsOddInteger(converted6) ? TrueIs : FalseIs;
+        if (value is float converted7)
+            return float.IsOddInteger(converted7) ? TrueIs : FalseIs;
+        if (value is ulong converted8)
+            return ulong.IsOddInteger(converted8) ? TrueIs : FalseIs;
+        if (value is sbyte converted9)
+            return sbyte.IsOddInteger(converted9) ? TrueIs : FalseIs;
+        if (value is long converted10)
+            return long.IsOddInteger(converted10) ? TrueIs : FalseIs;
+        if (value is ushort converted11)
+            return ushort.IsOddInteger(converted11) ? TrueIs : FalseIs;
+        if (value is BigInteger converted12)
+            return BigInteger.IsOddInteger(converted12) ? TrueIs : FalseIs;
+        return FalseIs;
+#endif
     }
 
     private bool? IsNaN(object value)
