@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="DoubleValueToThicknessConverterTests.cs" company="my-libraries">
+// <copyright file="DoubleToThicknessConverterTests.cs" company="my-libraries">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class DoubleValueToThicknessConverterTests : ValueConverterTester<DoubleValueToThicknessConverter>
+public class DoubleToThicknessConverterTests : SingleAndMultiValueConverterTester<DoubleToThicknessConverter>
 {
     [TestCase(13)]
     [TestCase("Anything")]
@@ -47,5 +47,53 @@ public class DoubleValueToThicknessConverterTests : ValueConverterTester<DoubleV
         _target.Position = position;
 
         ConvertBack(new Thickness(inputLeft, inputTop, inputRight, inputBottom), expectation);
+    }
+
+    [TestCase(1, 2, 3)]
+    [TestCase(1, 2, 3, 4, 5)]
+    [TestCase(1, 2, 3, 4, 5, 6)]
+    public void MultiConvert_CalledWithWrongLength_ReturnsDefault(params object[] values)
+    {
+        MultiConvert(values, default(Thickness));
+    }
+
+    [Test]
+    public void MultiConvert_CalledWithNull_ReturnsDefault()
+    {
+        MultiConvert(null, default(Thickness));
+    }
+
+    [TestCase(0, 2, 3, 4, "1", 2d, 3d, 4d)]
+    [TestCase(1, 0, 3, 4, 1d, 2, 3d, 4d)]
+    [TestCase(1, 2, 0, 4, 1d, 2d, null, 4d)]
+    [TestCase(1, 2, 3, 0, 1d, 2d, 3d, "")]
+    public void MultiConvert_CalledWithOtherThanADouble_InterpretsThoseAs0(double expectLeft, double expectTop, double expectRight, double expectBottom, params object[] values)
+    {
+        MultiConvert(values, new Thickness(expectLeft, expectTop, expectRight, expectBottom));
+    }
+
+    [TestCase(1, 1, 1, 1, 1d)]
+    [TestCase(2, 3, 2, 3, 2d, 3d)]
+    [TestCase(4, 5, 6, 7, 4d, 5d, 6d, 7d)]
+    public void MultiConvert_Called_InterpretsCorrectly(double expectLeft, double expectTop, double expectRight, double expectBottom, params object[] values)
+    {
+        MultiConvert(values, new Thickness(expectLeft, expectTop, expectRight, expectBottom));
+    }
+
+    [TestCase("")]
+    [TestCase(null)]
+    [TestCase(1)]
+    [TestCase(15.3)]
+    public void MultiConvertBack_CalledWithAnythingButThickness_ReturnsEmptyCollection(object input)
+    {
+        MultiConvertBack(input, []);
+    }
+
+    [TestCase(1d, 2d, 3d, 4d)]
+    [TestCase(5d, 4d, 3d, 2d)]
+    public void MultiConvertBack_Called_ReturnsItSeparated(double left, double top, double right, double bottom)
+    {
+        var input = new Thickness(left, top, right, bottom);
+        MultiConvertBack(input, [left, top, right, bottom]);
     }
 }

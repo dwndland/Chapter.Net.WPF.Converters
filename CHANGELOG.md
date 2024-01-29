@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
 - Move the parameter for the EqualsToVisibilityConverter to a converter property.
 - Change the configurable return value for the EqualsToVisibilityConverter from a single to multiple properties.
+- Renamed DoubleValueToThicknessConverter to DoubleToThicknessConverter
 ### Removed
 - Removed InverseBooleanConverter, thats replaced by BooleanToBooleanConverter.
 - Removed MultiBooleanToBooleanConverter, thats integrated into the BooleanToBooleanConverter.
@@ -45,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove NullToBooleanConverter, thats replaced by IsNullToBooleanConverter
 - Remove NullToVisibilityConverter, thats replaced by IsNullToVisibilityConverter
 - Remove CountToBooleanConverter, thats replaced by NumberCheckToBooleanConverter
+- Remove MultiValueToThicknessConverter, thats integrated into the DoubleToThicknessConverter
 ### Supported .Net Versions
 - .Net 6
 - .Net 7
