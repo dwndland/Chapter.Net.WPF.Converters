@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added StringToLowerConverter to convert the given value as string to lower.
 - Added StringToUpperConverter to convert the given value as string to upper.
 - Added StringCheckToBooleanConverter to execute a check on a single string or list of strings and returns a boolean representation of that result.
+- Added StringCheckToVisibilityConverter to execute a check on a single string or list of strings and returns a Visibility representation of that result.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
