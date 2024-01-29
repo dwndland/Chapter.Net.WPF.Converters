@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="MultiValueToPathConverter.cs" company="my-libraries">
+// <copyright file="ValueToPathConverter.cs" company="my-libraries">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
@@ -18,36 +18,22 @@ namespace Chapter.Net.WPF.Converters;
 ///     Combines all given strings into a path.
 /// </summary>
 [ValueConversion(typeof(string[]), typeof(string))]
-public class MultiValueToPathConverter : IMultiValueConverter
+public class ValueToPathConverter : MultiValueConverter
 {
     /// <summary>
     ///     Combines all given strings into a path.
     /// </summary>
-    /// <param name="values">The parts to combine.</param>
+    /// <param name="values">The values to convert.</param>
     /// <param name="targetType">Unused.</param>
     /// <param name="parameter">Unused.</param>
     /// <param name="culture">Unused.</param>
-    /// <returns>The assembled path.</returns>
-    public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+    /// <returns>The converted value.</returns>
+    public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
     {
         if (values == null)
             return string.Empty;
 
         var sections = values.Where(x => x != null).Select(x => x.ToString()).ToArray();
         return Path.Combine(sections);
-    }
-
-    /// <summary>
-    ///     Not implemented.
-    /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetTypes">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The MultiValueToPathConverter.ConvertBack is not implemented.</exception>
-    public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
     }
 }

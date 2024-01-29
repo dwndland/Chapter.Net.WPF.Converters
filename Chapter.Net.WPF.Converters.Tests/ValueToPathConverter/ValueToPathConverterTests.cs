@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="MultiValueToPathConverterTests.cs" company="my-libraries">
+// <copyright file="ValueToPathConverterTests.cs" company="my-libraries">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
@@ -11,7 +11,7 @@ using NUnit.Framework;
 
 namespace Chapter.Net.WPF.Converters.Tests;
 
-public class MultiValueToPathConverterTests : MultiConverterTester<MultiValueToPathConverter>
+public class ValueToPathConverterTests : MultiValueConverterTester<ValueToPathConverter>
 {
     [TestCase(@"C:\directory\sub\file.txt", "C:", "directory", "sub", "file.txt")]
     [TestCase(@"C:\sub\file.txt", "C:", null, "sub", "file.txt")]
@@ -35,6 +35,6 @@ public class MultiValueToPathConverterTests : MultiConverterTester<MultiValueToP
     [Test]
     public void ConvertBack_Called_RaisesException()
     {
-        Assert.That(() => ConvertBack(null, Array.Empty<object>()), Throws.TypeOf<NotImplementedException>());
+        Assert.That(() => ConvertBack(null, []), Throws.TypeOf<NotImplementedException>());
     }
 }
