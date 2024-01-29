@@ -4,30 +4,45 @@
 Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in XAMLs.
 
 ## Features
-- **BooleanToIntegerConverter:** Converts an boolean to its integer representation and back.
-- **BooleanToVisibilityInvertedConverter:** Converts true to Visible false to Collapsed. (The opposite of BooleanToVisibilityConverter).
-- **ConcatenateStringConverter** Concatenates a given list of objects to a single string with a separator.
-- **CountToBooleanConverter:** Converts a count to its boolean representation.
-- **CountToVisibilityConverter:** Converts a count to its visibility representation.
-- **DateOnlyToStringConverter:** Converts the given date only to a string by Format.
-- **DateTimeToStringConverter:** Converts the given date time to a string by Format.
-- **DateTimeUtcConverter:** Converts the given date time to universal or local time.
-- **DoubleValueToThicknessConverter:** Converts a value to a thickness by telling for what that value it.
-- **EqualsToBooleanConverter:** Equals two values and returns its result.
-- **EqualsToVisibilityConverter:** Equals two values and returns its visibility representation.
-- **IntegerToBooleanConverter:** Converts an integer to its boolean representation and back.
-- **InverseBooleanConverter:** Converts a boolean to is opposite.
-- **IsLastItemInListConverter:** Checks if the given item container is the last in the list.
-- **MultiBooleanToBooleanConverter** Merges a bunch of booleans to a single boolean.
-- **MultiBooleanToVisibilityConverter** Merges a bunch of booleans to a single visibility representation.
-- **MultiEqualsToBooleanConverter:** Equals multiple values and returns its result.
-- **MultiEqualsToVisibilityConverter:** Equals multiple values and returns its visibility representation.
-- **MultiValueToPathConverter:** Combines all given strings into a path.
-- **MultiValueToThicknessConverter:** Creates a new thickness object by the given values.
-- **NullToBooleanConverter:** Converts the null or not null value to bool with an optional direction parameter.
-- **NullToVisibilityConverter:** Converts the null or not null value to Visibility with an optional direction parameter.
-- **PathToStringConverter:** Converts a full path to a section from it.
-- **TimeOnlyToStringConverter:** Converts the given time only to a string by Format.
+- **Override** Override any converter to change their behavior.
+- **BooleanToBooleanConverter** Converts a single boolean or a list of booleans to another single boolean representation.
+- **BooleanToIntegerConverter** Converts a single boolean or a list of booleans to an integer representation.
+- **BooleanToVisibilityConverter** Converts a single boolean or a list of booleans into a Visibility representation.
+- **CharacterCheckToBooleanConverter** Executes a check on a single character or list of characters and returns a boolean representation of that result.
+- **CharacterCheckToVisibilityConverter** Executes a check on a single character or list of characters and returns a Visibility representation of that result.
+- **ConcatenateStringConverter** Concatenates all given values to a single string with an optional configurable separator.
+- **DateOnlyToStringConverter** Formats a single DateOnly to a string.
+- **DateTimeToStringConverter** Formats a single DateTime to a string.
+- **DateTimeUtcConverter** Converts the given date time to universal or local time.
+- **DelegateConverter** Provides a delegate to convert a single value or a list of values.
+- **DelegateToBooleanConverter** Provides a delegate to convert a single value or a list of values to boolean.
+- **DelegateToVisibilityConverter** Provides a delegate to convert a single value or a list of values to Visibility.
+- **DoubleComparisonToBooleanConverter** Executes a comparison on a single double or list of doubles to a boolean representation.
+- **DoubleComparisonToVisibilityConverter** Executes a comparison on a single Visibility or list of Visibilities to a boolean representation.
+- **DoubleMathConverter** Does a simple calculation with the given value as double.
+- **DoubleToStringConverter** Formats a double to string.
+- **DoubleToThicknessConverter** to build a Thickness object by a given single double value.
+- **EqualsToBooleanConverter** Compares a single value to a variable or a list of values to each other and returns its boolean representation.
+- **EqualsToVisibilityConverter** Compares a single value to a variable or a list of values to each other and returns its Visibility representation.
+- **IntegerComparisonToBooleanConverter** Executes a comparison on a single integer or list of integers to a boolean representation.
+- **IntegerComparisonToVisibilityConverter** Executes a comparison on a single integer or list of integers to a Visibility representation.
+- **IntegerMathConverter** Does a simple calculation with the given value as integer.
+- **IntegerToBooleanConverter** Converts a single integer or a list of integers to a boolean representation.
+- **IntegerToStringConverter** Formats an integer to string.
+- **IsLastItemInListConverter** Checks if the given item container is the last in the list.
+- **IsNullToBooleanConverter** Checks if a single object or a list of objects is null and returns a boolean representation.
+- **IsNullToVisibilityConverter** Checks if a single object or a list of objects is null and returns a Visibility representation.
+- **NumberCheckToBooleanConverter** Executes a check on a single number or list of numbers and returns a boolean representation of that result.
+- **NumberCheckToVisibilityConverter** Executes a check on a single number or list of numbers and returns a Visibility representation of that result.
+- **ObjectToTypeConverter** Returns the type of the given object.
+- **PathToStringConverter** Reads out part of a given path.
+- **RoundingConverter** Rounds the given value as double.
+- **StringCheckToBooleanConverter** Executes a check on a single string or list of strings and returns a boolean representation of that result.
+- **StringCheckToVisibilityConverter** Executes a check on a single string or list of strings and returns a Visibility representation of that result.
+- **StringToLowerConverter** Converts the given value as string to lower.
+- **StringToUpperConverter** Converts the given value as string to upper.
+- **TimeOnlyToStringConverter** Formats a single TimeOnly to a string.
+- **ValueToPathConverter** Combines all given strings into a path.
 
 ## Getting Started
 
@@ -37,478 +52,207 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     dotnet add package Chapter.Net.WPF.Converters
     ```
 
-2. **BooleanToIntegerConverter:**
-    - Usage
-    ```xaml
-    <converters:BooleanToIntegerConverter x:Key="BooleanToIntegerConverter" />
-
-    <controls:TitledItem Title="BooleanToIntegerConverter">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox x:Name="checked1" Content="Checked" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding IsChecked, ElementName=checked1, Converter={StaticResource BooleanToIntegerConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
+2. **Override:**
+    - Override any converter to change their behavior.
+    ```csharp
+    public class MyConcatenateStringConverter : ConcatenateStringConverter
+    {
+        public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            values = values.Distinct().ToArray();
+            var converted = base.Convert(values, targetType, parameter, culture);
+            return "Result: " + converted;
+        }
+    }
     ```
 
-3. **BooleanToVisibilityInvertedConverter:**
-    - Usage
+3. **BooleanToBooleanConverter**
+    - Converts a single boolean or a list of booleans to another single boolean representation.
     ```xaml
-    <converters:BooleanToVisibilityInvertedConverter x:Key="BooleanToVisibilityInvertedConverter" />
-
-    <controls:TitledItem Title="BooleanToVisibilityInvertedConverter">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox x:Name="checked2" Content="Checked" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding IsChecked, ElementName=checked2, Converter={StaticResource BooleanToVisibilityInvertedConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-4. **ConcatenateStringConverter:**
-    - Usage
+4. **BooleanToIntegerConverter**
+    - Converts a single boolean or a list of booleans to an integer representation.
     ```xaml
-    <converters:ConcatenateStringConverter x:Key="ConcatenateStringConverter" Separator="." />
-
-    <controls:TitledItem Title="ConcatenateStringConverter">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <TextBox Width="100" Text="{Binding Text7, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Width="100" Text="{Binding Text8, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Width="100" Text="{Binding Text9, UpdateSourceTrigger=PropertyChanged}" />
-            </StackPanel>
-            <TextBlock Margin="10,0"
-                        VerticalAlignment="Center"
-                        Text="-&gt;" />
-            <TextBlock VerticalAlignment="Center">
-                <TextBlock.Text>
-                    <MultiBinding Converter="{StaticResource ConcatenateStringConverter}">
-                        <Binding Path="Text7" />
-                        <Binding Path="Text8" />
-                        <Binding Path="Text9" />
-                    </MultiBinding>
-                </TextBlock.Text>
-            </TextBlock>
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-5. **CountToBooleanConverter:**
-    - Usage
+5. **BooleanToVisibilityConverter**
+    - Converts a single boolean or a list of booleans into a Visibility representation.
     ```xaml
-    <converters:CountToBooleanConverter x:Key="CountToBooleanConverter" />
-
-    <controls:TitledItem Title="CountToBooleanConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="30" Text="{Binding Integer1, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding Integer1, Converter={StaticResource CountToBooleanConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-6. **CountToVisibilityConverter:**
-    - Usage
+6. **CharacterCheckToBooleanConverter**
+    - Executes a check on a single character or list of characters and returns a boolean representation of that result.
     ```xaml
-    <converters:CountToVisibilityConverter x:Key="CountToVisibilityConverter" />
-
-    <controls:TitledItem Title="CountToVisibilityConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="30" Text="{Binding Integer2, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding Integer2, Converter={StaticResource CountToVisibilityConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-7. **DateOnlyToStringConverter:**
-    - Usage
+7. **CharacterCheckToVisibilityConverter**
+    - Executes a check on a single character or list of characters and returns a Visibility representation of that result.
     ```xaml
-    <converters:DateOnlyToStringConverter x:Key="DateOnlyToStringConverter" Format="LongDateString" />
-
-    <controls:TitledItem Title="DateOnlyToStringConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="LongDateString" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding DateOnly1, Converter={StaticResource DateOnlyToStringConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-8. **DateTimeToStringConverter:**
-    - Usage
+8. **ConcatenateStringConverter**
+    - Concatenates all given values to a single string with an optional configurable separator.
     ```xaml
-    <converters:DateTimeToStringConverter x:Key="DateTimeToStringConverter" Format="FullDateTimePattern" />
-
-    <controls:TitledItem Title="DateTimeToStringConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="FullDateTimePattern" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding DateTime1, Converter={StaticResource DateTimeToStringConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-9. **DateTimeUtcConverter:**
-    - Usage
+9. **DateOnlyToStringConverter**
+    - Formats a single DateOnly to a string.
     ```xaml
-    <converters:DateTimeUtcConverter x:Key="DateTimeUtcConverter" ToUniversalTime="True" />
-
-    <controls:TitledItem Title="DateTimeUtcConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="ToUniversalTime" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding DateTime1, Converter={StaticResource DateTimeUtcConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-10. **DoubleValueToThicknessConverter:**
-    - Usage
+10. **DateTimeToStringConverter**
+    - Formats a single DateTime to a string.
     ```xaml
-    <converters:DoubleValueToThicknessConverter x:Key="DoubleValueToThicknessConverter" Position="LeftRight" />
-
-    <controls:TitledItem Title="DoubleValueToThicknessConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="30" Text="{Binding Double1, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding Double1, Converter={StaticResource DoubleValueToThicknessConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-11. **EqualsToBooleanConverter:**
-    - Usage
+11. **DateTimeUtcConverter**
+    - Converts the given date time to universal or local time.
     ```xaml
-    <converters:EqualsToBooleanConverter x:Key="EqualsToBooleanConverter" />
-
-    <controls:TitledItem Title="EqualsToBooleanConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="50" Text="{Binding Text1, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding Text1, ConverterParameter=demo, Converter={StaticResource EqualsToBooleanConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-12. **EqualsToVisibilityConverter:**
-    - Usage
+12. **DelegateConverter**
+    - Provides a delegate to convert a single value or a list of values.
     ```xaml
-    <converters:EqualsToVisibilityConverter x:Key="EqualsToVisibilityConverter" />
-
-    <controls:TitledItem Title="EqualsToVisibilityConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="50" Text="{Binding Text2, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding Text2, ConverterParameter=demo, Converter={StaticResource EqualsToVisibilityConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-13. **IntegerToBooleanConverter:**
-    - Usage
+13. **DelegateToBooleanConverter**
+    - Provides a delegate to convert a single value or a list of values to boolean.
     ```xaml
-    <converters:IntegerToBooleanConverter x:Key="IntegerToBooleanConverter" />
-
-    <controls:TitledItem Title="IntegerToBooleanConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="30" Text="{Binding Integer3, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding Integer3, Converter={StaticResource IntegerToBooleanConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-14. **InverseBooleanConverter:**
-    - Usage
+14. **DelegateToVisibilityConverter**
+    - Provides a delegate to convert a single value or a list of values to Visibility.
     ```xaml
-    <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
-
-    <controls:TitledItem Title="InverseBooleanConverter">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox x:Name="checked3" Content="Checked" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding IsChecked, ElementName=checked3, Converter={StaticResource InverseBooleanConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-15. **IsLastItemInListConverter:**
-    - Usage
+15. **DoubleComparisonToBooleanConverter**
+    - Executes a comparison on a single double or list of doubles to a boolean representation.
     ```xaml
-    <converters:IsLastItemInListConverter x:Key="IsLastItemInListConverter" />
-
-    <controls:TitledItem Title="IsLastItemInListConverter">
-        <DataGrid HorizontalAlignment="Left"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False"
-                  HeadersVisibility="Column"
-                  ItemsSource="{Binding Integers}">
-            <DataGrid.ItemContainerStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Setter Property="Background" Value="White" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type DataGridRow}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <DataGridCellsPresenter />
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource IsLastItemInListConverter}}" Value="True">
-                                        <Setter Property="Background" Value="Yellow" />
-                                    </DataTrigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </DataGrid.ItemContainerStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="100"
-                                    Binding="{Binding Value}"
-                                    Header="Value"
-                                    SortMemberPath="Value" />
-            </DataGrid.Columns>
-        </DataGrid>
-    </controls:TitledItem>
     ```
 
-16. **MultiBooleanToBooleanConverter:**
-    - Usage
+16. **DoubleComparisonToVisibilityConverter**
+    - Executes a comparison on a single Visibility or list of Visibilities to a boolean representation.
     ```xaml
-    <converters:MultiBooleanToBooleanConverter x:Key="MultiBooleanToBooleanConverter" MixedIs="{x:Null}" />
-
-    <controls:TitledItem Title="MultiBooleanToBooleanConverter">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <CheckBox x:Name="checked12" Content="Checked" />
-                <CheckBox x:Name="checked13" Content="Checked" />
-                <CheckBox x:Name="checked14" Content="Checked" />
-            </StackPanel>
-            <TextBlock Margin="10,0"
-                        VerticalAlignment="Center"
-                        Text="-&gt;" />
-            <CheckBox VerticalAlignment="Center"
-                        Content="Are Equal"
-                        IsEnabled="False">
-                <CheckBox.IsChecked>
-                    <MultiBinding Converter="{StaticResource MultiBooleanToBooleanConverter}">
-                        <Binding ElementName="checked12" Path="IsChecked" />
-                        <Binding ElementName="checked13" Path="IsChecked" />
-                        <Binding ElementName="checked14" Path="IsChecked" />
-                    </MultiBinding>
-                </CheckBox.IsChecked>
-            </CheckBox>
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-17. **MultiBooleanToVisibilityConverter:**
-    - Usage
+17. **DoubleMathConverter**
+    - Does a simple calculation with the given value as double.
     ```xaml
-    <converters:MultiBooleanToVisibilityConverter x:Key="MultiBooleanToVisibilityConverter" MixedIs="Hidden" />
-
-    <controls:TitledItem Title="MultiBooleanToVisibilityConverter">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <CheckBox x:Name="checked15" Content="Checked" />
-                <CheckBox x:Name="checked16" Content="Checked" />
-                <CheckBox x:Name="checked17" Content="Checked" />
-            </StackPanel>
-            <TextBlock Margin="10,0"
-                        VerticalAlignment="Center"
-                        Text="-&gt;" />
-            <TextBlock VerticalAlignment="Center" Text="IsVisible">
-                <TextBlock.Visibility>
-                    <MultiBinding Converter="{StaticResource MultiBooleanToVisibilityConverter}">
-                        <Binding ElementName="checked15" Path="IsChecked" />
-                        <Binding ElementName="checked16" Path="IsChecked" />
-                        <Binding ElementName="checked17" Path="IsChecked" />
-                    </MultiBinding>
-                </TextBlock.Visibility>
-            </TextBlock>
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-18. **MultiEqualsToBooleanConverter:**
-    - Usage
+18. **DoubleToStringConverter**
+    - Formats a double to string.
     ```xaml
-    <converters:MultiEqualsToBooleanConverter x:Key="MultiEqualsToBooleanConverter" />
-
-    <controls:TitledItem Title="MultiEqualsToBooleanConverter">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <CheckBox x:Name="checked4" Content="Checked" />
-                <CheckBox x:Name="checked5" Content="Checked" />
-                <CheckBox x:Name="checked6" Content="Checked" />
-            </StackPanel>
-            <TextBlock Margin="10,0"
-                       VerticalAlignment="Center"
-                       Text="-&gt;" />
-            <CheckBox VerticalAlignment="Center"
-                      Content="Are Equal"
-                      IsEnabled="False">
-                <CheckBox.IsChecked>
-                    <MultiBinding Converter="{StaticResource MultiEqualsToBooleanConverter}">
-                        <Binding ElementName="checked4" Path="IsChecked" />
-                        <Binding ElementName="checked5" Path="IsChecked" />
-                        <Binding ElementName="checked6" Path="IsChecked" />
-                    </MultiBinding>
-                </CheckBox.IsChecked>
-            </CheckBox>
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-19. **MultiEqualsToVisibilityConverter:**
-    - Usage
+19. **DoubleToThicknessConverter**
+    - Builds a Thickness object by a given single double value.
     ```xaml
-    <converters:MultiEqualsToVisibilityConverter x:Key="MultiEqualsToVisibilityConverter" />
-
-    <controls:TitledItem Title="MultiEqualsToVisibilityConverter">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <CheckBox x:Name="checked7" Content="Checked" />
-                <CheckBox x:Name="checked8" Content="Checked" />
-                <CheckBox x:Name="checked9" Content="Checked" />
-            </StackPanel>
-            <TextBlock Margin="10,0"
-                       VerticalAlignment="Center"
-                       Text="-&gt;" />
-            <TextBlock VerticalAlignment="Center" Text="IsVisible">
-                <TextBlock.Visibility>
-                    <MultiBinding Converter="{StaticResource MultiEqualsToVisibilityConverter}">
-                        <Binding ElementName="checked7" Path="IsChecked" />
-                        <Binding ElementName="checked8" Path="IsChecked" />
-                        <Binding ElementName="checked9" Path="IsChecked" />
-                    </MultiBinding>
-                </TextBlock.Visibility>
-            </TextBlock>
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-20. **MultiValueToPathConverter:**
-    - Usage
+20. **EqualsToBooleanConverter**
+    - Compares a single value to a variable or a list of values to each other and returns its boolean representation.
     ```xaml
-    <converters:MultiValueToPathConverter x:Key="MultiValueToPathConverter" />
-
-    <controls:TitledItem Title="MultiValueToPathConverter">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <TextBox Width="100" Text="{Binding Text3, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Width="100" Text="{Binding Text4, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Width="100" Text="{Binding Text5, UpdateSourceTrigger=PropertyChanged}" />
-            </StackPanel>
-            <TextBlock Margin="10,0"
-                       VerticalAlignment="Center"
-                       Text="-&gt;" />
-            <TextBlock VerticalAlignment="Center">
-                <TextBlock.Text>
-                    <MultiBinding Converter="{StaticResource MultiValueToPathConverter}">
-                        <Binding Path="Text3" />
-                        <Binding Path="Text4" />
-                        <Binding Path="Text5" />
-                    </MultiBinding>
-                </TextBlock.Text>
-            </TextBlock>
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-21. **MultiValueToThicknessConverter:**
-    - Usage
+21. **EqualsToVisibilityConverter**
+    - Compares a single value to a variable or a list of values to each other and returns its Visibility representation.
     ```xaml
-    <converters:MultiValueToThicknessConverter x:Key="MultiValueToThicknessConverter" />
-
-    <controls:TitledItem Title="MultiValueToThicknessConverter">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <TextBox Width="30" Text="{Binding Double2, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Width="30" Text="{Binding Double3, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Width="30" Text="{Binding Double4, UpdateSourceTrigger=PropertyChanged}" />
-                <TextBox Width="30" Text="{Binding Double5, UpdateSourceTrigger=PropertyChanged}" />
-            </StackPanel>
-            <TextBlock Margin="10,0"
-                       VerticalAlignment="Center"
-                       Text="-&gt;" />
-            <Border VerticalAlignment="Center"
-                    BorderBrush="Gray"
-                    BorderThickness="1">
-                <TextBlock Text="Margin">
-                    <TextBlock.Margin>
-                        <MultiBinding Converter="{StaticResource MultiValueToThicknessConverter}">
-                            <Binding Path="Double2" />
-                            <Binding Path="Double3" />
-                            <Binding Path="Double4" />
-                            <Binding Path="Double5" />
-                        </MultiBinding>
-                    </TextBlock.Margin>
-                </TextBlock>
-            </Border>
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-22. **NullToBooleanConverter:**
-    - Usage
+22. **IntegerComparisonToBooleanConverter**
+    - Executes a comparison on a single integer or list of integers to a boolean representation.
     ```xaml
-    <converters:NullToBooleanConverter x:Key="NullToBooleanConverter" Direction="NullIsTrue" />
-
-    <controls:TitledItem Title="NullToBooleanConverter">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox x:Name="checked10"
-                      Content="Checked"
-                      IsThreeState="True" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding IsChecked, ElementName=checked10, Converter={StaticResource NullToBooleanConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-23. **NullToVisibilityConverter:**
-    - Usage
+23. **IntegerComparisonToVisibilityConverter**
+    - Executes a comparison on a single integer or list of integers to a Visibility representation.
     ```xaml
-    <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" Direction="NullIsVisible" />
-
-    <controls:TitledItem Title="NullToVisibilityConverter">
-        <StackPanel Orientation="Horizontal">
-            <CheckBox x:Name="checked11"
-                      Content="Checked"
-                      IsThreeState="True" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding IsChecked, ElementName=checked11, Converter={StaticResource NullToVisibilityConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-24. **PathToStringConverter:**
-    - Usage
+24. **IntegerMathConverter**
+    - Does a simple calculation with the given value as integer.
     ```xaml
-    <converters:PathToStringConverter x:Key="PathToStringConverter" Section="Directory" />
-
-    <controls:TitledItem Title="PathToStringConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="200" Text="{Binding Text6, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding Text6, ConverterParameter=demo, Converter={StaticResource PathToStringConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
     ```
 
-25. **TimeOnlyToStringConverter:**
-    - Usage
+25. **IntegerToBooleanConverter**
+    - Converts a single integer or a list of integers to a boolean representation.
     ```xaml
-    <converters:TimeOnlyToStringConverter x:Key="TimeOnlyToStringConverter" Format="ToLongTimeString" />
+    ```
 
-    <controls:TitledItem Title="TimeOnlyToStringConverter">
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="ToLongTimeString" />
-            <TextBlock Margin="10,0" Text="-&gt;" />
-            <TextBlock Text="{Binding TimeOnly1, Converter={StaticResource TimeOnlyToStringConverter}}" />
-        </StackPanel>
-    </controls:TitledItem>
+26. **IntegerToStringConverter**
+    - Formats an integer to string.
+    ```xaml
+    ```
+
+27. **IsLastItemInListConverter**
+    - Checks if the given item container is the last in the list.
+    ```xaml
+    ```
+
+28. **IsNullToBooleanConverter**
+    - Checks if a single object or a list of objects is null and returns a boolean representation.
+    ```xaml
+    ```
+
+29. **IsNullToVisibilityConverter**
+    - Checks if a single object or a list of objects is null and returns a Visibility representation.
+    ```xaml
+
+30. **NumberCheckToBooleanConverter**
+    - Executes a check on a single number or list of numbers and returns a boolean representation of that result.
+    ```xaml
+    ```
+
+31. **NumberCheckToVisibilityConverter**
+    - Executes a check on a single number or list of numbers and returns a Visibility representation of that result.
+    ```xaml
+    ```
+
+32. **ObjectToTypeConverter**
+    - Returns the type of the given object.
+    ```xaml
+    ```
+
+33. **PathToStringConverter**
+    - Reads out part of a given path.
+    ```xaml
+    ```
+
+34. **RoundingConverter**
+    - Rounds the given value as double.
+    ```xaml
+    ```
+
+35. **StringCheckToBooleanConverter**
+    - Executes a check on a single string or list of strings and returns a boolean representation of that result.
+    ```xaml
+    ```
+
+36. **StringCheckToVisibilityConverter**
+    - Executes a check on a single string or list of strings and returns a Visibility representation of that result.
+    ```xaml
+    ```
+
+37. **StringToLowerConverter**
+    - Converts the given value as string to lower.
+    ```xaml
+    ```
+
+38. **StringToUpperConverter**
+    - Converts the given value as string to upper.
+    ```xaml
+    ```
+
+39. **TimeOnlyToStringConverter**
+    - Formats a single TimeOnly to a string.
+    ```xaml
+    ```
+
+40. **ValueToPathConverter**
+    - Combines all given strings into a path.
+    ```xaml
     ```
 
 ## Links
