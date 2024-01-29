@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added IntegerToStringConverter to format a integer to string.
 - Added IsNullToBooleanConverter to check if a single object or a list of objects is null and returns a boolean representation.
 - Added IsNullToVisibilityConverter to check if a single object or a list of objects is null and returns a Visibility representation.
+- Added NumberCheckToBooleanConverter to execute a check on a single number or list of numbers and returns a boolean representation of that result.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
@@ -43,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed MultiEqualsToVisibilityConverter, thats integrated into the EqualsToVisibilityConverter.
 - Remove NullToBooleanConverter, thats replaced by IsNullToBooleanConverter
 - Remove NullToVisibilityConverter, thats replaced by IsNullToVisibilityConverter
+- Remove CountToBooleanConverter, thats replaced by NumberCheckToBooleanConverter
 ### Supported .Net Versions
 - .Net 6
 - .Net 7
