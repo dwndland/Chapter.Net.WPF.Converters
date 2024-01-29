@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added NumberCheckToBooleanConverter to execute a check on a single number or list of numbers and returns a boolean representation of that result.
 - Added ObjectToTypeConverter to return the type of the given object.
 - Added RoundingConverter to round the given value as double.
+- Added StringToLowerConverter to convert the given value as string to lower.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
