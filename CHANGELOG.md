@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added ObjectToTypeConverter to return the type of the given object.
 - Added RoundingConverter to round the given value as double.
 - Added StringToLowerConverter to convert the given value as string to lower.
+- Added StringToUpperConverter to convert the given value as string to upper.
 ### Changed
 - Move the parameter for the EqualsToBooleanConverter to a converter property.
 - Change the configurable return value for the EqualsToBooleanConverter from a single to multiple properties.
