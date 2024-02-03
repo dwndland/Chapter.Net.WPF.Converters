@@ -14,9 +14,6 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
 - **DateOnlyToStringConverter** Formats a single DateOnly to a string.
 - **DateTimeToStringConverter** Formats a single DateTime to a string.
 - **DateTimeUtcConverter** Converts the given date time to universal or local time.
-- **DelegateConverter** Provides a delegate to convert a single value or a list of values.
-- **DelegateToBooleanConverter** Provides a delegate to convert a single value or a list of values to boolean.
-- **DelegateToVisibilityConverter** Provides a delegate to convert a single value or a list of values to Visibility.
 - **DoubleComparisonToBooleanConverter** Executes a comparison on a single double or list of doubles to a boolean representation.
 - **DoubleComparisonToVisibilityConverter** Executes a comparison on a single Visibility or list of Visibilities to a boolean representation.
 - **DoubleMathConverter** Does a simple calculation with the given value as double.
