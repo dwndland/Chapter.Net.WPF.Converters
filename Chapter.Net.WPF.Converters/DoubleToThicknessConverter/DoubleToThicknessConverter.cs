@@ -19,6 +19,7 @@ namespace Chapter.Net.WPF.Converters;
 ///     Builds a Thickness object by a given single double value.
 /// </summary>
 [ValueConversion(typeof(double), typeof(Thickness))]
+[ValueConversion(typeof(double[]), typeof(Thickness))]
 public class DoubleToThicknessConverter : SingleAndMultiValueConverter
 {
     /// <summary>
