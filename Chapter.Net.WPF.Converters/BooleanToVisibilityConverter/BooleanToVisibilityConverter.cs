@@ -37,6 +37,13 @@ public class BooleanToVisibilityConverter : SingleAndMultiValueConverter
     public Visibility FalseIs { get; set; } = Visibility.Collapsed;
 
     /// <summary>
+    ///     The return to use if the given boolean is null.
+    /// </summary>
+    /// <value>Default: Visibility.Hidden.</value>
+    [DefaultValue(Visibility.Hidden)]
+    public Visibility NullIs { get; set; } = Visibility.Hidden;
+
+    /// <summary>
     ///     The return to use if the given booleans are mixed.
     /// </summary>
     /// <value>Default: Visibility.Visible.</value>
@@ -53,6 +60,9 @@ public class BooleanToVisibilityConverter : SingleAndMultiValueConverter
     /// <returns>The converted value.</returns>
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
+        if (value == null)
+            return NullIs;
+
         if (value is bool boolean)
             return boolean ? TrueIs : FalseIs;
 
@@ -72,13 +82,20 @@ public class BooleanToVisibilityConverter : SingleAndMultiValueConverter
         if (values == null)
             return FalseIs;
 
-        var booleans = values.OfType<bool>().Distinct().ToList();
-        return booleans.Count switch
+        var booleans = values.Select(x => x as bool?).Distinct().ToList();
+        switch (booleans.Count)
         {
-            0 => FalseIs,
-            > 1 => MixedIs,
-            _ => booleans[0] ? TrueIs : FalseIs
-        };
+            case 0:
+                return FalseIs;
+            case > 1:
+                return MixedIs;
+            default:
+            {
+                if (booleans[0] == null)
+                    return NullIs;
+                return booleans[0].Value ? TrueIs : FalseIs;
+            }
+        }
     }
 
     /// <summary>
@@ -97,6 +114,8 @@ public class BooleanToVisibilityConverter : SingleAndMultiValueConverter
             return true;
         if (visibility == FalseIs)
             return false;
+        if (visibility == NullIs)
+            return null;
         return false;
     }
 }
