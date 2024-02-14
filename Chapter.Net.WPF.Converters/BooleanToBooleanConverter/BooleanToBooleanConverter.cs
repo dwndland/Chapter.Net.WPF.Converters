@@ -36,6 +36,13 @@ public class BooleanToBooleanConverter : SingleAndMultiValueConverter
     public bool? FalseIs { get; set; } = true;
 
     /// <summary>
+    ///     The return to use if the given boolean is null.
+    /// </summary>
+    /// <value>Default: null.</value>
+    [DefaultValue(null)]
+    public bool? NullIs { get; set; } = null;
+
+    /// <summary>
     ///     The return to use if the given booleans are mixed.
     /// </summary>
     /// <value>Default: false.</value>
@@ -52,7 +59,12 @@ public class BooleanToBooleanConverter : SingleAndMultiValueConverter
     /// <returns>The converted value.</returns>
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        return value is bool boolean ? boolean ? TrueIs : FalseIs : FalseIs;
+        return value switch
+        {
+            null => NullIs,
+            bool boolean => boolean ? TrueIs : FalseIs,
+            _ => FalseIs
+        };
     }
 
     /// <summary>
@@ -81,12 +93,19 @@ public class BooleanToBooleanConverter : SingleAndMultiValueConverter
         if (values == null)
             return false;
 
-        var booleans = values.OfType<bool>().Distinct().ToList();
-        return booleans.Count switch
+        var booleans = values.Select(x => x as bool?).Distinct().ToList();
+        switch (booleans.Count)
         {
-            0 => false,
-            > 1 => MixedIs,
-            _ => booleans[0] ? TrueIs : FalseIs
-        };
+            case 0:
+                return FalseIs;
+            case > 1:
+                return MixedIs;
+            default:
+            {
+                if (booleans[0] == null)
+                    return NullIs;
+                return booleans[0].Value ? TrueIs : FalseIs;
+            }
+        }
     }
 }
