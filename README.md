@@ -6,6 +6,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
 ## Features
 - **Override** Override any converter to change their behavior.
 - **ValueConverterGroup** Calls one converter after another by passing the result of the previous as a value to the second.
+- **MultiValueConverterGroup** Calls the EntryConverter and then one converter after another by passing the result of the previous as a value to the second.
 - **BooleanToBooleanConverter** Converts a single boolean or a list of booleans to another single boolean representation.
 - **BooleanToIntegerConverter** Converts a single boolean or a list of booleans to an integer representation.
 - **BooleanToVisibilityConverter** Converts a single boolean or a list of booleans into a Visibility representation.
@@ -88,6 +89,45 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
+4. **MultiValueConverterGroup**
+    - Calls the EntryConverter and then one converter after another by passing the result of the previous as a value to the second.
+    ```xaml
+    <Border DataContext="{Binding MultiValueConverterGroup}" Style="{StaticResource Frame}">
+        <Border.Resources>
+            <converters:MultiValueConverterGroup x:Key="MultiValueConverterGroup">
+                <converters:MultiValueConverterGroup.EntryConverter>
+                    <converters:ConcatenateStringConverter Separator="-" />
+                </converters:MultiValueConverterGroup.EntryConverter>
+                <converters:StringCheckToBooleanConverter CheckType="IsLongerThan" Variable="20" />
+            </converters:MultiValueConverterGroup>
+        </Border.Resources>
+        <StackPanel>
+            <TextBlock Style="{StaticResource Caption}" Text="MultiValueConverterGroup" />
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <TextBox Width="100" Text="{Binding String1, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Width="100" Text="{Binding String2, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Width="100" Text="{Binding String3, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <TextBlock Margin="10,0"
+                           VerticalAlignment="Center"
+                           Text="-&gt;" />
+                <CheckBox VerticalAlignment="Center"
+                          Content="See Me"
+                          IsEnabled="False">
+                    <CheckBox.IsChecked>
+                        <MultiBinding Converter="{StaticResource MultiValueConverterGroup}">
+                            <Binding Path="String1" />
+                            <Binding Path="String2" />
+                            <Binding Path="String3" />
+                        </MultiBinding>
+                    </CheckBox.IsChecked>
+                </CheckBox>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+    ```
+
 5. **BooleanToBooleanConverter**
     - Converts a single boolean or a list of booleans to another single boolean representation.
     ```xaml
@@ -144,7 +184,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-4. **BooleanToIntegerConverter**
+6. **BooleanToIntegerConverter**
     - Converts a single boolean or a list of booleans to an integer representation.
     ```xaml
     <!-- Single -->
@@ -193,7 +233,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-5. **BooleanToVisibilityConverter**
+7. **BooleanToVisibilityConverter**
     - Converts a single boolean or a list of booleans into a Visibility representation.
     ```xaml
     <!-- Single -->
@@ -256,7 +296,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-6. **CharacterCheckToBooleanConverter**
+8. **CharacterCheckToBooleanConverter**
     - Executes a check on a single character or list of characters and returns a boolean representation of that result.
     ```xaml
     <!-- Single -->
@@ -326,7 +366,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-7. **CharacterCheckToVisibilityConverter**
+9. **CharacterCheckToVisibilityConverter**
     - Executes a check on a single character or list of characters and returns a Visibility representation of that result.
     ```xaml
     <!-- Single -->
@@ -384,7 +424,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-8. **ConcatenateStringConverter**
+10. **ConcatenateStringConverter**
     - Concatenates all given values to a single string with an optional configurable separator.
     ```xaml
     <Border DataContext="{Binding ConcatenateStringConverter}" Style="{StaticResource Frame}">
@@ -416,7 +456,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-9. **DateOnlyToStringConverter**
+11. **DateOnlyToStringConverter**
     - Formats a single DateOnly to a string.
     ```xaml
     <Border DataContext="{Binding DateOnlyToStringConverter}" Style="{StaticResource Frame}">
@@ -435,7 +475,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-10. **DateTimeToStringConverter**
+12. **DateTimeToStringConverter**
     - Formats a single DateTime to a string.
     ```xaml
     <Border DataContext="{Binding DateTimeToStringConverter}" Style="{StaticResource Frame}">
@@ -454,7 +494,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-11. **DateTimeUtcConverter**
+13. **DateTimeUtcConverter**
     - Converts the given date time to universal or local time.
     ```xaml
     <Border DataContext="{Binding DateTimeUtcConverter}" Style="{StaticResource Frame}">
@@ -473,7 +513,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-12. **DoubleComparisonToBooleanConverter**
+14. **DoubleComparisonToBooleanConverter**
     - Executes a comparison on a single double or list of doubles to a boolean representation.
     ```xaml
     <!-- Single -->
@@ -542,7 +582,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-13. **DoubleComparisonToVisibilityConverter**
+15. **DoubleComparisonToVisibilityConverter**
     - Executes a comparison on a single Visibility or list of Visibilities to a boolean representation.
     ```xaml
     <!-- Single -->
@@ -616,7 +656,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-14. **DoubleMathConverter**
+16. **DoubleMathConverter**
     - Does a simple calculation with the given value as double.
     ```xaml
     <Border DataContext="{Binding DoubleMathConverter}" Style="{StaticResource Frame}">
@@ -642,7 +682,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-15. **DoubleToStringConverter**
+17. **DoubleToStringConverter**
     - Formats a double to string.
     ```xaml
     <Border DataContext="{Binding DoubleToStringConverter}" Style="{StaticResource Frame}">
@@ -665,7 +705,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-16. **DoubleToThicknessConverter**
+18. **DoubleToThicknessConverter**
     - Builds a Thickness object by a given single double value.
     ```xaml
     <!-- Single -->
@@ -734,7 +774,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-17. **EqualsToBooleanConverter**
+19. **EqualsToBooleanConverter**
     - Compares a single value to a variable or a list of values to each other and returns its boolean representation.
     ```xaml
     <!-- Single -->
@@ -804,7 +844,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-18. **EqualsToVisibilityConverter**
+20. **EqualsToVisibilityConverter**
     - Compares a single value to a variable or a list of values to each other and returns its Visibility representation.
     ```xaml
     <!-- Single -->
@@ -874,7 +914,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-19. **IntegerComparisonToBooleanConverter**
+21. **IntegerComparisonToBooleanConverter**
     - Executes a comparison on a single integer or list of integers to a boolean representation.
     ```xaml
     <!-- Single -->
@@ -943,7 +983,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-20. **IntegerComparisonToVisibilityConverter**
+22. **IntegerComparisonToVisibilityConverter**
     - Executes a comparison on a single integer or list of integers to a Visibility representation.
     ```xaml
     <!-- Single -->
@@ -1017,7 +1057,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-21. **IntegerMathConverter**
+23. **IntegerMathConverter**
     - Does a simple calculation with the given value as integer.
     ```xaml
     <Border DataContext="{Binding IntegerMathConverter}" Style="{StaticResource Frame}">
@@ -1043,7 +1083,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-22. **IntegerToBooleanConverter**
+24. **IntegerToBooleanConverter**
     - Converts a single integer or a list of integers to a boolean representation.
     ```xaml
     <!-- Single -->
@@ -1108,7 +1148,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-23. **IntegerToStringConverter**
+25. **IntegerToStringConverter**
     - Formats an integer to string.
     ```xaml
     <Border DataContext="{Binding IntegerToStringConverter}" Style="{StaticResource Frame}">
@@ -1129,7 +1169,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-24. **IsLastItemInListConverter**
+26. **IsLastItemInListConverter**
     - Checks if the given item container is the last in the list.
     ```xaml
     <Border DataContext="{Binding IsLastItemInListConverter}" Style="{StaticResource Frame}">
@@ -1174,7 +1214,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-25. **IsNullToBooleanConverter**
+27. **IsNullToBooleanConverter**
     - Checks if a single object or a list of objects is null and returns a boolean representation.
     ```xaml
     <!-- Single -->
@@ -1235,7 +1275,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-26. **IsNullToVisibilityConverter**
+28. **IsNullToVisibilityConverter**
     - Checks if a single object or a list of objects is null and returns a Visibility representation.
     ```xaml
     <!-- Single -->
@@ -1301,7 +1341,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-27. **NumberCheckToBooleanConverter**
+29. **NumberCheckToBooleanConverter**
     - Executes a check on a single number or list of numbers and returns a boolean representation of that result.
     ```xaml
     <!-- Single -->
@@ -1366,7 +1406,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-28. **NumberCheckToVisibilityConverter**
+30. **NumberCheckToVisibilityConverter**
     - Executes a check on a single number or list of numbers and returns a Visibility representation of that result.
     ```xaml
     <!-- Single -->
@@ -1436,7 +1476,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-29. **ObjectToTypeConverter**
+31. **ObjectToTypeConverter**
     - Returns the type of the given object.
     ```xaml
     <!-- Single -->
@@ -1457,7 +1497,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-30. **PathToStringConverter**
+32. **PathToStringConverter**
     - Reads out part of a given path.
     ```xaml
     <Border DataContext="{Binding PathToStringConverter}" Style="{StaticResource Frame}">
@@ -1475,7 +1515,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-31. **RoundingConverter**
+33. **RoundingConverter**
     - Rounds the given value as double.
     ```xaml
     <Border DataContext="{Binding RoundingConverter}" Style="{StaticResource Frame}">
@@ -1499,7 +1539,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-32. **StringCheckToBooleanConverter**
+34. **StringCheckToBooleanConverter**
     - Executes a check on a single string or list of strings and returns a boolean representation of that result.
     ```xaml
     <!-- Single -->
@@ -1554,7 +1594,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-33. **StringCheckToVisibilityConverter**
+35. **StringCheckToVisibilityConverter**
     - Executes a check on a single string or list of strings and returns a Visibility representation of that result.
     ```xaml
     <!-- Single -->
@@ -1615,7 +1655,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-34. **StringToLowerConverter**
+36. **StringToLowerConverter**
     - Converts the given value as string to lower.
     ```xaml
     <Border DataContext="{Binding StringToLowerConverter}" Style="{StaticResource Frame}">
@@ -1633,7 +1673,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-35. **StringToUpperConverter**
+37. **StringToUpperConverter**
     - Converts the given value as string to upper.
     ```xaml
     <Border DataContext="{Binding StringToUpperConverter}" Style="{StaticResource Frame}">
@@ -1651,7 +1691,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-36. **TimeOnlyToStringConverter**
+38. **TimeOnlyToStringConverter**
     - Formats a single TimeOnly to a string.
     ```xaml
     <Border DataContext="{Binding TimeOnlyToStringConverter}" Style="{StaticResource Frame}">
@@ -1670,7 +1710,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     </Border>
     ```
 
-37. **ValueToPathConverter**
+39. **ValueToPathConverter**
     - Combines all given strings into a path.
     ```xaml
     <Border DataContext="{Binding ValueToPathConverter}" Style="{StaticResource Frame}">

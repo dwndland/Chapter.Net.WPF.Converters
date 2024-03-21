@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.2.0] - 2024-03-21
 ### Added
 - Added ValueConverterGroup to allow chaining of value converters with passing one result into the next converter.
+- Added MultiValueConverterGroup to allow calling first a multi value converter and then chaining of value converters with passing one result into the next converter.
 ### Supported .Net Versions
 - .Net 6
 - .Net 7

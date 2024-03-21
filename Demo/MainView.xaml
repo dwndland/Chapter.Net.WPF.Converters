@@ -341,6 +341,41 @@
                 </StackPanel>
             </Border>
 
+            <Border DataContext="{Binding MultiValueConverterGroup}" Style="{StaticResource Frame}">
+                <Border.Resources>
+                    <converters:MultiValueConverterGroup x:Key="MultiValueConverterGroup">
+                        <converters:MultiValueConverterGroup.EntryConverter>
+                            <converters:ConcatenateStringConverter Separator="-" />
+                        </converters:MultiValueConverterGroup.EntryConverter>
+                        <converters:StringCheckToBooleanConverter CheckType="IsLongerThan" Variable="20" />
+                    </converters:MultiValueConverterGroup>
+                </Border.Resources>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource Caption}" Text="MultiValueConverterGroup" />
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <TextBox Width="100" Text="{Binding String1, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Width="100" Text="{Binding String2, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Width="100" Text="{Binding String3, UpdateSourceTrigger=PropertyChanged}" />
+                        </StackPanel>
+                        <TextBlock Margin="10,0"
+                                   VerticalAlignment="Center"
+                                   Text="-&gt;" />
+                        <CheckBox VerticalAlignment="Center"
+                                  Content="See Me"
+                                  IsEnabled="False">
+                            <CheckBox.IsChecked>
+                                <MultiBinding Converter="{StaticResource MultiValueConverterGroup}">
+                                    <Binding Path="String1" />
+                                    <Binding Path="String2" />
+                                    <Binding Path="String3" />
+                                </MultiBinding>
+                            </CheckBox.IsChecked>
+                        </CheckBox>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
             <Border DataContext="{Binding DateOnlyToStringConverter}" Style="{StaticResource Frame}">
                 <Border.Resources>
                     <converters:DateOnlyToStringConverter x:Key="DateOnlyToStringConverter1" Format="LongDateString" />

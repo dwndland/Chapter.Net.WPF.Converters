@@ -24,6 +24,7 @@ public class MainViewModel : ObservableObject
     public PropertyViewModel MultiCharacterCheckToVisibilityConverter { get; set; } = new('a', '0', 'c');
     public PropertyViewModel ConcatenateStringConverter { get; set; } = new("First", "Second", "Third");
     public PropertyViewModel ValueConverterGroup { get; set; } = new(9, 9, 9);
+    public PropertyViewModel MultiValueConverterGroup { get; set; } = new("First", "Second", "Third");
     public PropertyViewModel DateOnlyToStringConverter { get; set; } = new(new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day));
     public PropertyViewModel DateTimeToStringConverter { get; set; } = new(DateTime.Now);
     public PropertyViewModel DateTimeUtcConverter { get; set; } = new(DateTime.Now);
