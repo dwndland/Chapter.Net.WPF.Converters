@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Added ValueConverterGroup to allow chaining of value converters with passing one result into the next converter.
+### Supported .Net Versions
+- .Net 6
+- .Net 7
+- .Net 8
+
 ## [2.1.0] - 2024-02-14
 ### Changed
 - Added NullIs option to the BooleanToBooleanConverter.

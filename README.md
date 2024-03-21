@@ -5,6 +5,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
 
 ## Features
 - **Override** Override any converter to change their behavior.
+- **ValueConverterGroup** Calls one converter after another by passing the result of the previous as a value to the second.
 - **BooleanToBooleanConverter** Converts a single boolean or a list of booleans to another single boolean representation.
 - **BooleanToIntegerConverter** Converts a single boolean or a list of booleans to an integer representation.
 - **BooleanToVisibilityConverter** Converts a single boolean or a list of booleans into a Visibility representation.
@@ -63,7 +64,31 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
     }
     ```
 
-3. **BooleanToBooleanConverter**
+3. **ValueConverterGroup**
+    - Calls one converter after another by passing the result of the previous as a value to the second.
+    ```xaml
+    <Border DataContext="{Binding ValueConverterGroup}" Style="{StaticResource Frame}">
+        <Border.Resources>
+            <converters:ValueConverterGroup x:Key="ValueConverterGroup">
+                <converters:IntegerMathConverter Calculation="Addition" Variable="2" />
+                <converters:IntegerToStringConverter Digits="2" />
+            </converters:ValueConverterGroup>
+        </Border.Resources>
+        <StackPanel>
+            <TextBlock Style="{StaticResource Caption}" Text="ValueConverterGroup" />
+            <StackPanel Orientation="Horizontal">
+                <controls:NumberBox Width="80"
+                                    Number="{Binding Integer1}"
+                                    NumberType="Int"
+                                    UpDownBehavior="ArrowsAndButtons" />
+                <TextBlock Margin="10,0" Text="-&gt;" />
+                <TextBlock Text="{Binding Integer1, Converter={StaticResource ValueConverterGroup}}" />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+    ```
+
+5. **BooleanToBooleanConverter**
     - Converts a single boolean or a list of booleans to another single boolean representation.
     ```xaml
     <!-- Single -->

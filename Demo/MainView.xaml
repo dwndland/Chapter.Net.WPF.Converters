@@ -321,6 +321,26 @@
                 </StackPanel>
             </Border>
 
+            <Border DataContext="{Binding ValueConverterGroup}" Style="{StaticResource Frame}">
+                <Border.Resources>
+                    <converters:ValueConverterGroup x:Key="ValueConverterGroup">
+                        <converters:IntegerMathConverter Calculation="Addition" Variable="2" />
+                        <converters:IntegerToStringConverter Digits="2" />
+                    </converters:ValueConverterGroup>
+                </Border.Resources>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource Caption}" Text="ValueConverterGroup" />
+                    <StackPanel Orientation="Horizontal">
+                        <controls:NumberBox Width="80"
+                                            Number="{Binding Integer1}"
+                                            NumberType="Int"
+                                            UpDownBehavior="ArrowsAndButtons" />
+                        <TextBlock Margin="10,0" Text="-&gt;" />
+                        <TextBlock Text="{Binding Integer1, Converter={StaticResource ValueConverterGroup}}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
             <Border DataContext="{Binding DateOnlyToStringConverter}" Style="{StaticResource Frame}">
                 <Border.Resources>
                     <converters:DateOnlyToStringConverter x:Key="DateOnlyToStringConverter1" Format="LongDateString" />
