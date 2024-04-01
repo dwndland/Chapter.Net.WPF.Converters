@@ -8,44 +8,45 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace Chapter.Net.WPF.Converters;
-
-/// <summary>
-///     The base class for all converter which are IValueConverter and IMultiValueConverter together.
-/// </summary>
-public abstract class SingleAndMultiValueConverter : IValueConverter, IMultiValueConverter
+namespace Chapter.Net.WPF.Converters
 {
-    /// <inheritdoc />
-    public abstract object Convert(object[] values, Type targetType, object parameter, CultureInfo culture);
-
     /// <summary>
-    ///     ConvertBack is not implemented.
+    ///     The base class for all converter which are IValueConverter and IMultiValueConverter together.
     /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetTypes">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The ConvertBack is not implemented.</exception>
-    public virtual object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+    public abstract class SingleAndMultiValueConverter : IValueConverter, IMultiValueConverter
     {
-        throw new NotImplementedException();
-    }
+        /// <inheritdoc />
+        public abstract object Convert(object[] values, Type targetType, object parameter, CultureInfo culture);
 
-    /// <inheritdoc />
-    public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);
+        /// <summary>
+        ///     ConvertBack is not implemented.
+        /// </summary>
+        /// <param name="value">Unused.</param>
+        /// <param name="targetTypes">Unused.</param>
+        /// <param name="parameter">Unused.</param>
+        /// <param name="culture">Unused.</param>
+        /// <returns>Nothing.</returns>
+        /// <exception cref="NotImplementedException">The ConvertBack is not implemented.</exception>
+        public virtual object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
 
-    /// <summary>
-    ///     ConvertBack is not implemented.
-    /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetType">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The ConvertBack is not implemented.</exception>
-    public virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
+        /// <inheritdoc />
+        public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);
+
+        /// <summary>
+        ///     ConvertBack is not implemented.
+        /// </summary>
+        /// <param name="value">Unused.</param>
+        /// <param name="targetType">Unused.</param>
+        /// <param name="parameter">Unused.</param>
+        /// <param name="culture">Unused.</param>
+        /// <returns>Nothing.</returns>
+        /// <exception cref="NotImplementedException">The ConvertBack is not implemented.</exception>
+        public virtual object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -12,52 +12,53 @@ using System.Windows.Data;
 
 // ReSharper disable once CheckNamespace
 
-namespace Chapter.Net.WPF.Converters;
-
-/// <summary>
-///     Calls the EntryConverter and then one converter after another by passing the result of the previous as a value to
-///     the second.
-/// </summary>
-public class MultiValueConverterGroup : List<IValueConverter>, IMultiValueConverter
+namespace Chapter.Net.WPF.Converters
 {
-    /// <summary>
-    ///     The entry converter which result to pass to the other.
-    /// </summary>
-    public IMultiValueConverter EntryConverter { get; set; }
-
     /// <summary>
     ///     Calls the EntryConverter and then one converter after another by passing the result of the previous as a value to
     ///     the second.
     /// </summary>
-    /// <param name="values">The values to convert.</param>
-    /// <param name="targetType">The target type passed to all converters.</param>
-    /// <param name="parameter">The parameter passed to all converters.</param>
-    /// <param name="culture">The culture passed to all converters.</param>
-    /// <returns>The result of the last converter.</returns>
-    /// <exception cref="InvalidOperationException">The EntryConverter is not set.</exception>
-    public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+    public class MultiValueConverterGroup : List<IValueConverter>, IMultiValueConverter
     {
-        if (EntryConverter == null)
-            throw new InvalidOperationException("The EntryConverter is not set.");
+        /// <summary>
+        ///     The entry converter which result to pass to the other.
+        /// </summary>
+        public IMultiValueConverter EntryConverter { get; set; }
 
-        if (values == null)
-            return null;
+        /// <summary>
+        ///     Calls the EntryConverter and then one converter after another by passing the result of the previous as a value to
+        ///     the second.
+        /// </summary>
+        /// <param name="values">The values to convert.</param>
+        /// <param name="targetType">The target type passed to all converters.</param>
+        /// <param name="parameter">The parameter passed to all converters.</param>
+        /// <param name="culture">The culture passed to all converters.</param>
+        /// <returns>The result of the last converter.</returns>
+        /// <exception cref="InvalidOperationException">The EntryConverter is not set.</exception>
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (EntryConverter == null)
+                throw new InvalidOperationException("The EntryConverter is not set.");
 
-        var value = EntryConverter.Convert(values, targetType, parameter, culture);
-        return this.Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
-    }
+            if (values == null)
+                return null;
 
-    /// <summary>
-    ///     ConvertBack is not implemented.
-    /// </summary>
-    /// <param name="value">Unused.</param>
-    /// <param name="targetTypes">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>Nothing.</returns>
-    /// <exception cref="NotImplementedException">The ConvertBack is not implemented.</exception>
-    public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
+            var value = EntryConverter.Convert(values, targetType, parameter, culture);
+            return this.Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
+        }
+
+        /// <summary>
+        ///     ConvertBack is not implemented.
+        /// </summary>
+        /// <param name="value">Unused.</param>
+        /// <param name="targetTypes">Unused.</param>
+        /// <param name="parameter">Unused.</param>
+        /// <param name="culture">Unused.</param>
+        /// <returns>Nothing.</returns>
+        /// <exception cref="NotImplementedException">The ConvertBack is not implemented.</exception>
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

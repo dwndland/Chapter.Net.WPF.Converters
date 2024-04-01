@@ -6,30 +6,31 @@
 
 // ReSharper disable once CheckNamespace
 
-namespace Chapter.Net.WPF.Converters;
-
-/// <summary>
-///     Defines the rounding method for <see cref="RoundingConverter" />.
-/// </summary>
-public enum RoundingMode
+namespace Chapter.Net.WPF.Converters
 {
     /// <summary>
-    ///     Math.Round(number) shall be used.
+    ///     Defines the rounding method for <see cref="RoundingConverter" />.
     /// </summary>
-    Round,
+    public enum RoundingMode
+    {
+        /// <summary>
+        ///     Math.Round(number) shall be used.
+        /// </summary>
+        Round,
 
-    /// <summary>
-    ///     Math.Round(number, decimals) shall be used.
-    /// </summary>
-    RoundWithDecimals,
+        /// <summary>
+        ///     Math.Round(number, decimals) shall be used.
+        /// </summary>
+        RoundWithDecimals,
 
-    /// <summary>
-    ///     Math.Ceiling(number) shall be used.
-    /// </summary>
-    Ceiling,
+        /// <summary>
+        ///     Math.Ceiling(number) shall be used.
+        /// </summary>
+        Ceiling,
 
-    /// <summary>
-    ///     Math.Floor(number) shall be used.
-    /// </summary>
-    Floor
+        /// <summary>
+        ///     Math.Floor(number) shall be used.
+        /// </summary>
+        Floor
+    }
 }

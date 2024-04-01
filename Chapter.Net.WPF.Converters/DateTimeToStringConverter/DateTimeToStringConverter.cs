@@ -11,73 +11,85 @@ using System.Windows.Data;
 
 // ReSharper disable CheckNamespace
 
-namespace Chapter.Net.WPF.Converters;
-
-/// <summary>
-///     Formats a single DateTime to a string.
-/// </summary>
-[ValueConversion(typeof(DateTime), typeof(string))]
-public class DateTimeToStringConverter : ValueConverter
+namespace Chapter.Net.WPF.Converters
 {
-    /// <summary>
-    ///     Defines how the given DateTime shall be converted.
-    /// </summary>
-    /// <value>Default: DateTimeFormat.Formatter.</value>
-    [DefaultValue(DateTimeFormat.Formatter)]
-    public DateTimeFormat Format { get; set; } = DateTimeFormat.Formatter;
-
-    /// <summary>
-    ///     The formatter to use if the Format is set to DateTimeFormat.Formatter.
-    /// </summary>
-    /// <value>Default: "g".</value>
-    [DefaultValue("g")]
-    public string Formatter { get; set; } = "g";
-
-    /// <summary>
-    ///     Defines if the date time shall be converted to local time.
-    /// </summary>
-    /// <value>Default: false.</value>
-    [DefaultValue(false)]
-    public bool ToLocalTime { get; set; } = false;
-
-    /// <summary>
-    ///     Defines if the date time shall be converted to universal time.
-    /// </summary>
-    /// <value>Default: false.</value>
-    [DefaultValue(false)]
-    public bool ToUniversalTime { get; set; } = false;
-
     /// <summary>
     ///     Formats a single DateTime to a string.
     /// </summary>
-    /// <param name="value">The value to convert.</param>
-    /// <param name="targetType">Unused.</param>
-    /// <param name="parameter">Unused.</param>
-    /// <param name="culture">Unused.</param>
-    /// <returns>The converted value.</returns>
-    public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    [ValueConversion(typeof(DateTime), typeof(string))]
+    public class DateTimeToStringConverter : ValueConverter
     {
-        if (value is not DateTime dateTime)
-            return string.Empty;
+        /// <summary>
+        ///     Defines how the given DateTime shall be converted.
+        /// </summary>
+        /// <value>Default: DateTimeFormat.Formatter.</value>
+        [DefaultValue(DateTimeFormat.Formatter)]
+        public DateTimeFormat Format { get; set; } = DateTimeFormat.Formatter;
 
-        if (ToLocalTime)
-            dateTime = dateTime.ToLocalTime();
-        else if (ToUniversalTime)
-            dateTime = dateTime.ToUniversalTime();
+        /// <summary>
+        ///     The formatter to use if the Format is set to DateTimeFormat.Formatter.
+        /// </summary>
+        /// <value>Default: "g".</value>
+        [DefaultValue("g")]
+        public string Formatter { get; set; } = "g";
 
-        return Format switch
+        /// <summary>
+        ///     Defines if the date time shall be converted to local time.
+        /// </summary>
+        /// <value>Default: false.</value>
+        [DefaultValue(false)]
+        public bool ToLocalTime { get; set; } = false;
+
+        /// <summary>
+        ///     Defines if the date time shall be converted to universal time.
+        /// </summary>
+        /// <value>Default: false.</value>
+        [DefaultValue(false)]
+        public bool ToUniversalTime { get; set; } = false;
+
+        /// <summary>
+        ///     Formats a single DateTime to a string.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <param name="targetType">Unused.</param>
+        /// <param name="parameter">Unused.</param>
+        /// <param name="culture">Unused.</param>
+        /// <returns>The converted value.</returns>
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            DateTimeFormat.Formatter => dateTime.ToString(Formatter, CultureInfo.CurrentCulture),
-            DateTimeFormat.ShortTimePattern => dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern, CultureInfo.CurrentCulture),
-            DateTimeFormat.LongTimePattern => dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture),
-            DateTimeFormat.ShortDatePattern => dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern, CultureInfo.CurrentCulture),
-            DateTimeFormat.LongDatePattern => dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture),
-            DateTimeFormat.FullDateTimePattern => dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.FullDateTimePattern, CultureInfo.CurrentCulture),
-            DateTimeFormat.ShortDateString => dateTime.ToShortDateString(),
-            DateTimeFormat.LongDateString => dateTime.ToLongDateString(),
-            DateTimeFormat.ShortTimeString => dateTime.ToShortTimeString(),
-            DateTimeFormat.LongTimeString => dateTime.ToLongTimeString(),
-            _ => dateTime.ToString(CultureInfo.CurrentCulture)
-        };
+            if (!(value is DateTime dateTime))
+                return string.Empty;
+
+            if (ToLocalTime)
+                dateTime = dateTime.ToLocalTime();
+            else if (ToUniversalTime)
+                dateTime = dateTime.ToUniversalTime();
+
+            switch (Format)
+            {
+                case DateTimeFormat.Formatter:
+                    return dateTime.ToString(Formatter, CultureInfo.CurrentCulture);
+                case DateTimeFormat.ShortTimePattern:
+                    return dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern, CultureInfo.CurrentCulture);
+                case DateTimeFormat.LongTimePattern:
+                    return dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern, CultureInfo.CurrentCulture);
+                case DateTimeFormat.ShortDatePattern:
+                    return dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern, CultureInfo.CurrentCulture);
+                case DateTimeFormat.LongDatePattern:
+                    return dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern, CultureInfo.CurrentCulture);
+                case DateTimeFormat.FullDateTimePattern:
+                    return dateTime.ToString(CultureInfo.CurrentCulture.DateTimeFormat.FullDateTimePattern, CultureInfo.CurrentCulture);
+                case DateTimeFormat.ShortDateString:
+                    return dateTime.ToShortDateString();
+                case DateTimeFormat.LongDateString:
+                    return dateTime.ToLongDateString();
+                case DateTimeFormat.ShortTimeString:
+                    return dateTime.ToShortTimeString();
+                case DateTimeFormat.LongTimeString:
+                    return dateTime.ToLongTimeString();
+                default:
+                    return dateTime.ToString(CultureInfo.CurrentCulture);
+            }
+        }
     }
 }

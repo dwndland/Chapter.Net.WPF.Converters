@@ -6,20 +6,21 @@
 
 // ReSharper disable once CheckNamespace
 
-namespace Chapter.Net.WPF.Converters;
-
-/// <summary>
-///     Defines how the integer or double comparison converters shall compare.
-/// </summary>
-public enum NumberComparisonType
+namespace Chapter.Net.WPF.Converters
 {
     /// <summary>
-    ///     Checks if the given value is bigger than the variable.
+    ///     Defines how the integer or double comparison converters shall compare.
     /// </summary>
-    BiggerThan,
+    public enum NumberComparisonType
+    {
+        /// <summary>
+        ///     Checks if the given value is bigger than the variable.
+        /// </summary>
+        BiggerThan,
 
-    /// <summary>
-    ///     Checks if the given value is smaller than the variable.
-    /// </summary>
-    SmallerThan
+        /// <summary>
+        ///     Checks if the given value is smaller than the variable.
+        /// </summary>
+        SmallerThan
+    }
 }

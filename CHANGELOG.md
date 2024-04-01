@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.0] - 2024-04-01
+### Added
+- Added more supported .net versions.
+### Supported .Net Versions
+- .Net Core 3.0
+- .Net Framework 4.5
+- .Net 5 (Windows)
+- .Net 6 (Windows)
+- .Net 7 (Windows)
+- .Net 8 (Windows)
+
 ## [2.2.0] - 2024-03-21
 ### Added
 - Added ValueConverterGroup to allow chaining of value converters with passing one result into the next converter.
