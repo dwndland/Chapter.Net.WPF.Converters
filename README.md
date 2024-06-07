@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/dwndland/Chapter.Net.WPF.Converters/master/Icon.png" alt="logo" width="64"/>
+<img src="https://raw.githubusercontent.com/dwndlnd/Chapter.Net.WPF.Converters/master/Icon.png" alt="logo" width="64"/>
 
 # Chapter.Net.WPF.Converters Library
 
@@ -1746,7 +1746,7 @@ Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in X
 
 ## Links
 * [NuGet](https://www.nuget.org/packages/Chapter.Net.WPF.Converters)
-* [GitHub](https://github.com/dwndland/Chapter.Net.WPF.Converters)
+* [GitHub](https://github.com/dwndlnd/Chapter.Net.WPF.Converters)
 
 ## License
 Copyright (c) David Wendland. All rights reserved.
