@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chapter.Net" Version="1.1.0" />
-    <PackageReference Include="Chapter.Net.WPF.Controls" Version="1.2.0" />
+    <PackageReference Include="Chapter.Net" Version="2.0.0" />
+    <PackageReference Include="Chapter.Net.WPF.Controls" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>

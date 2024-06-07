@@ -331,10 +331,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="ValueConverterGroup" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="80"
-                                            Number="{Binding Integer1}"
-                                            NumberType="Int"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="80"
+                                                   Number="{Binding Integer1}"
+                                                   NumberType="Int"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <TextBlock Text="{Binding Integer1, Converter={StaticResource ValueConverterGroup}}" />
                     </StackPanel>
@@ -430,10 +430,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleComparisonToBooleanConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <CheckBox Content="See Me"
                                   IsChecked="{Binding Double1, Converter={StaticResource SingleDoubleComparisonToBooleanConverter}}"
@@ -452,18 +452,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleComparisonToBooleanConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double1}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double2}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double3}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double1}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double2}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double3}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -492,10 +492,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleComparisonToVisibilityConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <Border Width="50"
                                 Height="10"
@@ -515,18 +515,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleComparisonToVisibilityConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double1}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double2}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double3}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double1}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double2}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double3}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -559,15 +559,15 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleMathConverter" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="&lt;-&gt;" />
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1, Converter={StaticResource DoubleMathConverter}}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1, Converter={StaticResource DoubleMathConverter}}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -581,10 +581,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleToStringConverter" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <ContentControl Content="{Binding Double1, Converter={StaticResource DoubleToStringConverter}}" />
                     </StackPanel>
@@ -598,10 +598,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleToThicknessConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <Border VerticalAlignment="Center"
                                 BorderBrush="Gray"
@@ -623,14 +623,14 @@
                     <TextBlock Style="{StaticResource Caption}" Text="DoubleToThicknessConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double1}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double2}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double1}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double2}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -664,10 +664,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="EqualsToBooleanConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <CheckBox VerticalAlignment="Center"
                                   Content="See Me"
@@ -685,18 +685,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="EqualsToBooleanConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double1}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double2}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double3}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double1}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double2}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double3}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -727,10 +727,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="EqualsToVisibilityConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <Border Width="50"
                                 Height="10"
@@ -748,18 +748,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="EqualsToVisibilityConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double1}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double2}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double3}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double1}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double2}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double3}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -788,10 +788,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerComparisonToBooleanConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Integer1}"
-                                            NumberType="Int"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Integer1}"
+                                                   NumberType="Int"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <CheckBox Content="See Me"
                                   IsChecked="{Binding Integer1, Converter={StaticResource SingleIntegerComparisonToBooleanConverter}}"
@@ -810,18 +810,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerComparisonToBooleanConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer1}"
-                                                NumberType="Int"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer2}"
-                                                NumberType="Int"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer3}"
-                                                NumberType="Int"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer1}"
+                                                       NumberType="Int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer2}"
+                                                       NumberType="Int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer3}"
+                                                       NumberType="Int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -850,10 +850,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerComparisonToVisibilityConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Integer1}"
-                                            NumberType="Int"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Integer1}"
+                                                   NumberType="Int"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <Border Width="50"
                                 Height="10"
@@ -873,18 +873,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerComparisonToVisibilityConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer1}"
-                                                NumberType="Int"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer2}"
-                                                NumberType="Int"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer3}"
-                                                NumberType="Int"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer1}"
+                                                       NumberType="Int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer2}"
+                                                       NumberType="Int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer3}"
+                                                       NumberType="Int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -917,15 +917,15 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerMathConverter" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="&lt;-&gt;" />
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1, Converter={StaticResource IntegerMathConverter}}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1, Converter={StaticResource IntegerMathConverter}}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -937,10 +937,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerToBooleanConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Integer1}"
-                                            NumberType="int"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Integer1}"
+                                                   NumberType="int"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="&lt;-&gt;" />
                         <CheckBox VerticalAlignment="Center"
                                   Content="Check Me"
@@ -957,18 +957,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerToBooleanConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer1}"
-                                                NumberType="int"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer2}"
-                                                NumberType="int"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Integer3}"
-                                                NumberType="int"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer1}"
+                                                       NumberType="int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer2}"
+                                                       NumberType="int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Integer3}"
+                                                       NumberType="int"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -995,10 +995,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="IntegerToStringConverter" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Integer1}"
-                                            NumberType="Int"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Integer1}"
+                                                   NumberType="Int"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <ContentControl Content="{Binding Integer1, Converter={StaticResource IntegerToStringConverter}}" />
                     </StackPanel>
@@ -1166,10 +1166,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="NumberCheckToBooleanConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <CheckBox Content="See Me"
                                   IsChecked="{Binding Double1, Converter={StaticResource SingleNumberCheckToBooleanConverter}}"
@@ -1186,18 +1186,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="NumberCheckToBooleanConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double1}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double2}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double3}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double1}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double2}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double3}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -1224,10 +1224,10 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="NumberCheckToVisibilityConverter (Single)" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="40"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="40"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <Border Width="50"
                                 Height="10"
@@ -1245,18 +1245,18 @@
                     <TextBlock Style="{StaticResource Caption}" Text="NumberCheckToVisibilityConverter (Multi)" />
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double1}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double2}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
-                            <controls:NumberBox Width="40"
-                                                Number="{Binding Double3}"
-                                                NumberType="Double"
-                                                UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double1}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double2}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
+                            <controls:ChapterNumberBox Width="40"
+                                                       Number="{Binding Double3}"
+                                                       NumberType="Double"
+                                                       UpDownBehavior="ArrowsAndButtons" />
                         </StackPanel>
                         <TextBlock Margin="10,0"
                                    VerticalAlignment="Center"
@@ -1319,11 +1319,11 @@
                 <StackPanel>
                     <TextBlock Style="{StaticResource Caption}" Text="RoundingConverter" />
                     <StackPanel Orientation="Horizontal">
-                        <controls:NumberBox Width="80"
-                                            Number="{Binding Double1}"
-                                            NumberType="Double"
-                                            Step="0,001"
-                                            UpDownBehavior="ArrowsAndButtons" />
+                        <controls:ChapterNumberBox Width="80"
+                                                   Number="{Binding Double1}"
+                                                   NumberType="Double"
+                                                   Step="0,001"
+                                                   UpDownBehavior="ArrowsAndButtons" />
                         <TextBlock Margin="10,0" Text="-&gt;" />
                         <TextBlock Text="{Binding Double1, Converter={StaticResource RoundingConverter}}" />
                     </StackPanel>
