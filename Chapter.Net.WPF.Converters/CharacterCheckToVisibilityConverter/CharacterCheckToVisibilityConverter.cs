@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="CharacterCheckToVisibilityConverter.cs" company="my-libraries">
+// <copyright file="CharacterCheckToVisibilityConverter.cs" company="dwndland">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------

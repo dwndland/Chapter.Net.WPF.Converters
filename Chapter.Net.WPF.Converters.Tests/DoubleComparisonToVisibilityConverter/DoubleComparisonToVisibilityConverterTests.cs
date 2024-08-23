@@ -1,5 +1,5 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="DoubleComparisonToVisibilityConverterTests.cs" company="my-libraries">
+// <copyright file="DoubleComparisonToVisibilityConverterTests.cs" company="dwndland">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------

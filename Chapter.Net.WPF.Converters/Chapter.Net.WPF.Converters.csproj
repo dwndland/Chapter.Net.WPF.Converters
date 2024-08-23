@@ -7,7 +7,7 @@
     <Authors>David Wendland</Authors>
     <Description>Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in XAMLs.</Description>
     <Copyright>Copyright (c) 2024 David Wendland</Copyright>
-    <PackageProjectUrl>https://github.com/dwndlnd/Chapter.Net.WPF.Converters</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/dwndland/Chapter.Net.WPF.Converters</PackageProjectUrl>
     <PackageIcon>Icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

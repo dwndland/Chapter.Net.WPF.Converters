@@ -1,11 +1,11 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="CharacterCheckToBooleanConverterTests.cs" company="my-libraries">
+// <copyright file="CharacterCheckToBooleanConverterTests.cs" company="dwndland">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
 
-using NUnit.Framework;
 using System;
+using NUnit.Framework;
 
 // ReSharper disable once CheckNamespace
 

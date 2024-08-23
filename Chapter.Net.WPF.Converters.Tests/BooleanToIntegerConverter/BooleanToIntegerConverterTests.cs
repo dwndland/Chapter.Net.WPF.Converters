@@ -1,11 +1,11 @@
 // -----------------------------------------------------------------------------------------------------------------
-// <copyright file="BooleanToIntegerConverterTests.cs" company="my-libraries">
+// <copyright file="BooleanToIntegerConverterTests.cs" company="dwndland">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
 
-using NUnit.Framework;
 using System;
+using NUnit.Framework;
 
 // ReSharper disable once CheckNamespace
 

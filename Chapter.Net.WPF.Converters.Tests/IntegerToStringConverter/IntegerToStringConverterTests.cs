@@ -1,10 +1,9 @@
 ﻿// -----------------------------------------------------------------------------------------------------------------
-// <copyright file="IntegerToStringConverterTests.cs" company="my-libraries">
+// <copyright file="IntegerToStringConverterTests.cs" company="dwndland">
 //     Copyright (c) David Wendland. All rights reserved.
 // </copyright>
 // -----------------------------------------------------------------------------------------------------------------
 
-using System;
 using NUnit.Framework;
 
 // ReSharper disable once CheckNamespace
