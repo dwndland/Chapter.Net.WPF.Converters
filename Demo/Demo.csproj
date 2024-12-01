@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <IsPackable>false</IsPackable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Chapter.Net" Version="2.0.0" />
-    <PackageReference Include="Chapter.Net.WPF.Controls" Version="3.0.0" />
+    <PackageReference Include="Chapter.Net" Version="2.2.0" />
+    <PackageReference Include="Chapter.Net.WPF.Controls" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
