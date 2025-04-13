@@ -3,7 +3,7 @@
 # Chapter.Net.WPF.Converters Library
 
 ## Overview
-Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in XAMLs.
+Chapter.Net.WPF.Converters is a library that offers a comprehensive collection of ready-to-use value converters for common data binding scenarios in WPF applications.
 
 ## Features
 - **Override** Override any converter to change their behavior.

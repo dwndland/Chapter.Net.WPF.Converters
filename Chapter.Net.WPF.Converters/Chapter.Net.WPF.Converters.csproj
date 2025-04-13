@@ -5,8 +5,8 @@
     <UseWPF>true</UseWPF>
     <Version>3.1.0</Version>
     <Authors>David Wendland</Authors>
-    <Description>Chapter.Net.WPF.Converters provides a bunch of useful converters to be used in XAMLs.</Description>
-    <Copyright>Copyright (c) 2024 David Wendland</Copyright>
+    <Description>Chapter.Net.WPF.Converters is a library that offers a comprehensive collection of ready-to-use value converters for common data binding scenarios in WPF applications.</Description>
+    <Copyright>Copyright (c) 2025 David Wendland</Copyright>
     <PackageProjectUrl>https://github.com/dwndland/Chapter.Net.WPF.Converters</PackageProjectUrl>
     <PackageIcon>Icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
